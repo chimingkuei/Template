@@ -4,7 +4,7 @@
 exe
 C#
 .cs
-D:\Chimingkuei\repos\Reference\C#\Template\Template\obj\x64\Debug\
+D:\Chimingkuei\repos\Reference\C#\Template\Template\obj\Debug\
 Template
 none
 false
@@ -12,7 +12,7 @@ DEBUG;TRACE
 D:\Chimingkuei\repos\Reference\C#\Template\Template\App.xaml
 995768037
 4522838759
-8-1863777313
+8-1667442679
 321132744978
 MainWindow.xaml;UI\ButtonStyles.xaml;UI\CheckBoxStyles.xaml;UI\ComboBoxStyles.xaml;UI\GroupBoxStyles.xaml;UI\RadioButtonStyles.xaml;UI\SliderStyles.xaml;UI\TabControlStyles.xaml;UI\TextBoxStyles.xaml;
 

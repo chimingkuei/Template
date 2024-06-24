@@ -143,7 +143,7 @@ namespace Template
                         //};
                         //excel.CreateExcel(@"E:\Temp\test.xlsx", "Test", heater, data);
                         List<List<string>> data;
-                        excel.ReadExcel(@"E:\Temp\test.xlsx", 0, out data);
+                        excel.ReadExcel(@"E:\Temp\test.xlsx", 0, "all", out data);
                         foreach (var row in data)
                         {
                             foreach (var cell in row)

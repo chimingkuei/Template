@@ -69,10 +69,16 @@ namespace DataSphereX
         /// <param name="sheetname">
         /// The name or index of the worksheet. This parameter can be either a string (worksheet name) or an int (worksheet index).
         /// </param>
+        /// <param name="searchmodel">
+        /// The search model to use. "all" retrieves all data from the worksheet, "one" searches for a specific value in the specified column.
+        /// </param>
         /// <param name="data">
         /// Output parameter to hold the data read from the Excel sheet.
         /// </param>
-        public void ReadExcel<T>(string filepath, object sheetname, out List<T> data)
+        /// <param name="tuple">
+        /// A tuple containing the column index and search value for the "one" search model.
+        /// </param>
+        public void ReadExcel<T>(string filepath, object sheetname, string searchmodel, out List<T> data, Tuple<int, string> tuple = null)
         {
             data = new List<T>();
             if (File.Exists(filepath))
@@ -117,16 +123,34 @@ namespace DataSphereX
                     }
                     int rowCount = worksheet.Dimension.Rows;
                     int colCount = worksheet.Dimension.Columns;
-                    for (int row = 1; row <= rowCount; row++)
+                    if (searchmodel == "all")
                     {
-                        List<string> row_data = new List<string>();
-                        for (int col = 1; col <= colCount; col++)
+                        for (int row = 1; row <= rowCount; row++)
                         {
-                            var value = worksheet.Cells[row, col].Value;
-                            //Console.WriteLine($"Cell [{row}, {col}] value: {value}");
-                            row_data.Add((string)value);
+                            List<string> row_data = new List<string>();
+                            for (int col = 1; col <= colCount; col++)
+                            {
+                                var value = worksheet.Cells[row, col].Value;
+                                //Console.WriteLine($"Cell [{row}, {col}] value: {value}");
+                                row_data.Add((string)value);
+                            }
+                            data.Add((T)(object)row_data);
                         }
-                        data.Add((T)(object)row_data);
+                    }
+                    else if (searchmodel == "one")
+                    {
+                        for (int row = 1; row <= rowCount; row++)
+                        {
+                            var contstr = worksheet.Cells[row, tuple.Item1].Value;
+                            if (contstr != null)
+                            {
+                                if (contstr.ToString() == tuple.Item2)
+                                {
+                                    data.Add((T)(object)row);
+                                    break;
+                                }
+                            }
+                        }
                     }
                 }
             }
