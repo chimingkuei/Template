@@ -1,0 +1,12 @@
+D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\bin\Debug\DataSphereX.dll
+D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\bin\Debug\DataSphereX.pdb
+D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\obj\Debug\DataSphereX.csproj.AssemblyReference.cache
+D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\obj\Debug\DataSphereX.csproj.CoreCompileInputs.cache
+D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\obj\Debug\DataSphereX.dll
+D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\obj\Debug\DataSphereX.pdb
+D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\bin\Debug\EPPlus.dll
+D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
+D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\bin\Debug\System.ComponentModel.Annotations.dll
+D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\bin\Debug\EPPlus.xml
+D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml
+D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\obj\Debug\DataSphe.4B814D30.Up2Date
