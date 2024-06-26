@@ -210,6 +210,10 @@
     <Resource Include="UI\RadioButtonYesIcon.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CamNexus\CamNexus.csproj">
+      <Project>{445f625c-b9e1-4cda-bdae-f8f0d44d8b50}</Project>
+      <Name>CamNexus</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataSphereX\DataSphereX.csproj">
       <Project>{1d85d7b7-a906-401d-bac8-41b21220851a}</Project>
       <Name>DataSphereX</Name>

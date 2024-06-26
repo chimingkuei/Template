@@ -485,3 +485,6 @@ D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\EPPlus.dll
 D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\Microsoft.IO.RecyclableMemoryStream.dll
 D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\EPPlus.xml
 D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\Microsoft.IO.RecyclableMemoryStream.xml
+D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\CamNexus.dll
+D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\uEyeDotNet.dll
+D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\CamNexus.pdb

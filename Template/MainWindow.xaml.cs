@@ -24,6 +24,7 @@ using System.Windows.Shapes;
 using static System.Net.Mime.MediaTypeNames;
 using static Template.BaseLogRecord;
 using DataSphereX;
+using CamNexus;
 
 namespace Template
 {
@@ -142,16 +143,17 @@ namespace Template
                         //    new List<string> { "A3", "B3", "C3" }
                         //};
                         //excel.CreateExcel(@"E:\Temp\test.xlsx", "Test", heater, data);
-                        List<List<string>> data;
-                        excel.ReadExcel(@"E:\Temp\test.xlsx", 0, "all", out data);
-                        foreach (var row in data)
-                        {
-                            foreach (var cell in row)
-                            {
-                                Console.WriteLine(cell);
-                            }
-                            Console.WriteLine();
-                        }
+                        //List<List<string>> data;
+                        //excel.ReadExcel(@"E:\Temp\test.xlsx", 0, "all", out data);
+                        //foreach (var row in data)
+                        //{
+                        //    foreach (var cell in row)
+                        //    {
+                        //        Console.WriteLine(cell);
+                        //    }
+                        //    Console.WriteLine();
+                        //}
+                        IDSUI cam = new IDSUI();
                         break;
                     }
                
