@@ -118,6 +118,7 @@ namespace Template
         #region Parameter and Init
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            cam.m_displayHandle = Display_Windows.Handle;
             LoadConfig(0, 0);
         }
         BaseConfig<RootObject> Config = new BaseConfig<RootObject>();
@@ -125,6 +126,7 @@ namespace Template
         BaseLogRecord Logger = new BaseLogRecord();
         //Logger.WriteLog("儲存參數!", LogLevel.General, richTextBoxGeneral);
         #endregion
+        IDSUI cam = new IDSUI();
         #endregion
 
         #region Main Screen
@@ -132,7 +134,7 @@ namespace Template
         {
             switch ((sender as Button).Name)
             {
-                case nameof(Demo):
+                case nameof(Demo1):
                     {
                         ExcelEngine excel = new ExcelEngine();
                         //List<string> heater = new List<string> { "值1", "值2", "值3"};
@@ -153,10 +155,16 @@ namespace Template
                         //    }
                         //    Console.WriteLine();
                         //}
-                        IDSUI cam = new IDSUI();
+                        cam.CameraInit(0);
+                        cam.ContinueAcquisition();
                         break;
                     }
-               
+                case nameof(Demo2):
+                    {
+                        cam.SetGain(50);
+                        break;
+                    }
+
             }
         }
         #endregion
