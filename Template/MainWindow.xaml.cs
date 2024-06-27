@@ -135,7 +135,7 @@ namespace Template
         {
             switch ((sender as Button).Name)
             {
-                case nameof(Demo1):
+                case nameof(Demo):
                     {
                         //ExcelEngine excel = new ExcelEngine();
                         //List<string> heater = new List<string> { "值1", "值2", "值3"};
@@ -158,18 +158,8 @@ namespace Template
                         //}
                         //cam.CameraInit(0);
                         //cam.ContinueAcquisition();
-                        cam1.display = Display_Windows;
-                        cam1.CameraInit(0);
-                        cam1.OpenCamera();
-                        cam1.ContinueAcquisition();
                         break;
                     }
-                case nameof(Demo2):
-                    {
-                        //cam.SetGain(50);
-                        break;
-                    }
-
             }
         }
         #endregion
