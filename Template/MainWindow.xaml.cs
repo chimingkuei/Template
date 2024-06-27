@@ -127,6 +127,7 @@ namespace Template
         //Logger.WriteLog("儲存參數!", LogLevel.General, richTextBoxGeneral);
         #endregion
         IDSUI cam = new IDSUI();
+        Basler cam1 = new Basler();
         #endregion
 
         #region Main Screen
@@ -136,7 +137,7 @@ namespace Template
             {
                 case nameof(Demo1):
                     {
-                        ExcelEngine excel = new ExcelEngine();
+                        //ExcelEngine excel = new ExcelEngine();
                         //List<string> heater = new List<string> { "值1", "值2", "值3"};
                         //List<List<string>> data = new List<List<string>>
                         //{
@@ -155,13 +156,17 @@ namespace Template
                         //    }
                         //    Console.WriteLine();
                         //}
-                        cam.CameraInit(0);
-                        cam.ContinueAcquisition();
+                        //cam.CameraInit(0);
+                        //cam.ContinueAcquisition();
+                        cam1.display = Display_Windows;
+                        cam1.CameraInit(0);
+                        cam1.OpenCamera();
+                        cam1.ContinueAcquisition();
                         break;
                     }
                 case nameof(Demo2):
                     {
-                        cam.SetGain(50);
+                        //cam.SetGain(50);
                         break;
                     }
 
