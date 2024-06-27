@@ -25,6 +25,7 @@ using static System.Net.Mime.MediaTypeNames;
 using static Template.BaseLogRecord;
 using DataSphereX;
 using CamNexus;
+using System.Windows.Media.Media3D;
 
 namespace Template
 {
@@ -113,12 +114,16 @@ namespace Template
             Config.Save(model, serialnumber, SerialNumberClass(), encryption);
         }
         #endregion
+
+        private void Open_camera(object camera_index)
+        {
+            Cam.OpenCamera(Convert.ToInt32(camera_index), Display_Windows);
+        }
         #endregion
 
         #region Parameter and Init
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            cam.m_displayHandle = Display_Windows.Handle;
             LoadConfig(0, 0);
         }
         BaseConfig<RootObject> Config = new BaseConfig<RootObject>();
@@ -126,8 +131,8 @@ namespace Template
         BaseLogRecord Logger = new BaseLogRecord();
         //Logger.WriteLog("儲存參數!", LogLevel.General, richTextBoxGeneral);
         #endregion
-        IDSUI cam = new IDSUI();
-        Basler cam1 = new Basler();
+        Webcam Cam = new Webcam();
+        Thread Open_camera_thread;
         #endregion
 
         #region Main Screen
@@ -156,8 +161,8 @@ namespace Template
                         //    }
                         //    Console.WriteLine();
                         //}
-                        //cam.CameraInit(0);
-                        //cam.ContinueAcquisition();
+                        Open_camera_thread = new Thread(new ParameterizedThreadStart(Open_camera));
+                        Open_camera_thread.Start(0);
                         break;
                     }
             }
