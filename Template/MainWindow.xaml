@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        xmlns:controls="clr-namespace:InnovaControls;assembly=InnovaControls"
         xmlns:local="clr-namespace:Template"
         mc:Ignorable="d"
         Closing="WindowClosing" 
@@ -46,11 +47,15 @@
                     <WindowsFormsHost  Margin="16,18,229,15">
                         <wf:PictureBox x:Name="Display_Windows" BorderStyle="FixedSingle"/>
                     </WindowsFormsHost>
+                    <Button x:Name="Test" Style="{StaticResource BaseButton}" Margin="783,199,47,191" Content="Test" FontSize="18" Click="Main_Btn_Click"/>
+                    <controls:IndicatorLight x:Name="IndicatorLight" LightColor="#00FF00" Width="32" Height="32" Margin="840,59,100,355"/>
+                    
+
                 </Grid>
             </TabItem>
             <TabItem Header="參數畫面" Style="{StaticResource BaseTabcontrol}">
                 <Grid>
-
+                    <controls:PieChart Margin="45,27,58,24"/>
 
                 </Grid>
             </TabItem>

@@ -114,11 +114,6 @@ namespace Template
             Config.Save(model, serialnumber, SerialNumberClass(), encryption);
         }
         #endregion
-
-        private void Open_camera(object camera_index)
-        {
-            Cam.OpenCamera(Convert.ToInt32(camera_index), Display_Windows);
-        }
         #endregion
 
         #region Parameter and Init
@@ -161,17 +156,18 @@ namespace Template
                         //    }
                         //    Console.WriteLine();
                         //}
-                        Open_camera_thread = new Thread(new ParameterizedThreadStart(Open_camera));
-                        Open_camera_thread.Start(0);
+                        Cam.OpenCamera(0, Display_Windows);
+                        break;
+                    }
+                case nameof(Test):
+                    {
+                        Cam.SaveImage(@"E:\Temp\1.bmp");
                         break;
                     }
             }
         }
         #endregion
-
-
-
-
+        
 
     }
 }

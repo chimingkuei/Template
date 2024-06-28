@@ -490,3 +490,11 @@ D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\uEyeDotNet.dll
 D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\CamNexus.pdb
 D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\Basler.Pylon.dll
 D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\CamNexus.dll.config
+D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\InnovaControls.dll
+D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\InnovaControls.pdb
+D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\LiveCharts.dll
+D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\LiveCharts.Wpf.dll
+D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\LiveCharts.pdb
+D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\LiveCharts.xml
+D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\LiveCharts.Wpf.pdb
+D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\LiveCharts.Wpf.xml

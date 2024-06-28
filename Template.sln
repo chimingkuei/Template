@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataSphereX", "DataSphereX\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CamNexus", "CamNexus\CamNexus.csproj", "{445F625C-B9E1-4CDA-BDAE-F8F0D44D8B50}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InnovaControls", "InnovaControls\InnovaControls.csproj", "{491CF8BB-5F61-4A9B-8C2E-963D4DD0B9E9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,14 @@ Global
 		{445F625C-B9E1-4CDA-BDAE-F8F0D44D8B50}.Release|Any CPU.Build.0 = Release|Any CPU
 		{445F625C-B9E1-4CDA-BDAE-F8F0D44D8B50}.Release|x64.ActiveCfg = Release|Any CPU
 		{445F625C-B9E1-4CDA-BDAE-F8F0D44D8B50}.Release|x64.Build.0 = Release|Any CPU
+		{491CF8BB-5F61-4A9B-8C2E-963D4DD0B9E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{491CF8BB-5F61-4A9B-8C2E-963D4DD0B9E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{491CF8BB-5F61-4A9B-8C2E-963D4DD0B9E9}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{491CF8BB-5F61-4A9B-8C2E-963D4DD0B9E9}.Debug|x64.Build.0 = Debug|Any CPU
+		{491CF8BB-5F61-4A9B-8C2E-963D4DD0B9E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{491CF8BB-5F61-4A9B-8C2E-963D4DD0B9E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{491CF8BB-5F61-4A9B-8C2E-963D4DD0B9E9}.Release|x64.ActiveCfg = Release|Any CPU
+		{491CF8BB-5F61-4A9B-8C2E-963D4DD0B9E9}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
