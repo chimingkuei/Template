@@ -220,6 +220,10 @@
       <Project>{1d85d7b7-a906-401d-bac8-41b21220851a}</Project>
       <Name>DataSphereX</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DimmerNexus\DimmerNexus.csproj">
+      <Project>{68db314b-70d3-4c04-b890-f7d1c02f5ec5}</Project>
+      <Name>DimmerNexus</Name>
+    </ProjectReference>
     <ProjectReference Include="..\InnovaControls\InnovaControls.csproj">
       <Project>{491cf8bb-5f61-4a9b-8c2e-963d4dd0b9e9}</Project>
       <Name>InnovaControls</Name>

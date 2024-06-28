@@ -51,18 +51,18 @@ namespace InnovaControls
             cDrivefreeSpaceValues.Clear();
             dDriveusedSpaceValues.Clear();
             dDrivefreeSpaceValues.Clear();
-            // 獲取 C 槽存儲信息
+            // 獲取C槽存儲信息
             long cDriveTotalSpace = GetDriveTotalSpace("C:");
             long cDriveFreeSpace = GetDriveFreeSpace("C:");
-            double cDriveusedSpaceTB = (cDriveTotalSpace - cDriveFreeSpace) / (1024.0 * 1024.0 * 1024.0);
-            double cDrivefreeSpaceTB = cDriveFreeSpace / (1024.0 * 1024.0 * 1024.0);
+            double cDriveusedSpaceTB = Math.Round((cDriveTotalSpace - cDriveFreeSpace) / (1024.0 * 1024.0 * 1024.0), 2);
+            double cDrivefreeSpaceTB = Math.Round(cDriveFreeSpace / (1024.0 * 1024.0 * 1024.0), 2);
             cDriveusedSpaceValues.Add(cDriveusedSpaceTB);
             cDrivefreeSpaceValues.Add(cDrivefreeSpaceTB);
-            // 獲取 D 槽存儲信息
+            // 獲取D槽存儲信息
             long dDriveTotalSpace = GetDriveTotalSpace("D:");
             long dDriveFreeSpace = GetDriveFreeSpace("D:");
-            double dDriveusedSpaceTB = (dDriveTotalSpace - dDriveFreeSpace) / (1024.0 * 1024.0 * 1024.0);
-            double dDrivefreeSpaceTB = dDriveFreeSpace / (1024.0 * 1024.0 * 1024.0);
+            double dDriveusedSpaceTB = Math.Round((dDriveTotalSpace - dDriveFreeSpace) / (1024.0 * 1024.0 * 1024.0), 2);
+            double dDrivefreeSpaceTB = Math.Round(dDriveFreeSpace / (1024.0 * 1024.0 * 1024.0), 2);
             dDriveusedSpaceValues.Add(dDriveusedSpaceTB);
             dDrivefreeSpaceValues.Add(dDrivefreeSpaceTB);
             // 更新圓餅圖數據

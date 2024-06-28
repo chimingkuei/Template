@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CamNexus", "CamNexus\CamNex
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InnovaControls", "InnovaControls\InnovaControls.csproj", "{491CF8BB-5F61-4A9B-8C2E-963D4DD0B9E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DimmerNexus", "DimmerNexus\DimmerNexus.csproj", "{68DB314B-70D3-4C04-B890-F7D1C02F5EC5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,14 @@ Global
 		{491CF8BB-5F61-4A9B-8C2E-963D4DD0B9E9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{491CF8BB-5F61-4A9B-8C2E-963D4DD0B9E9}.Release|x64.ActiveCfg = Release|Any CPU
 		{491CF8BB-5F61-4A9B-8C2E-963D4DD0B9E9}.Release|x64.Build.0 = Release|Any CPU
+		{68DB314B-70D3-4C04-B890-F7D1C02F5EC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68DB314B-70D3-4C04-B890-F7D1C02F5EC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68DB314B-70D3-4C04-B890-F7D1C02F5EC5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{68DB314B-70D3-4C04-B890-F7D1C02F5EC5}.Debug|x64.Build.0 = Debug|Any CPU
+		{68DB314B-70D3-4C04-B890-F7D1C02F5EC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68DB314B-70D3-4C04-B890-F7D1C02F5EC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68DB314B-70D3-4C04-B890-F7D1C02F5EC5}.Release|x64.ActiveCfg = Release|Any CPU
+		{68DB314B-70D3-4C04-B890-F7D1C02F5EC5}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

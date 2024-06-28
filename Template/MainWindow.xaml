@@ -44,7 +44,7 @@
                     <Button x:Name="Demo" Style="{StaticResource BaseButton}" Margin="779,129,51,261" Content="Demo" FontSize="18" Click="Main_Btn_Click"/>
                     <TextBox x:Name="Parameter1" Style="{StaticResource BaseTextBox}" Tag="請輸入內容..." Margin="784,302,58,103"/>
                     <TextBox x:Name="Parameter2" Style="{StaticResource BaseTextBox}" Tag="請輸入內容..." Margin="782,369,60,37"/>
-                    <WindowsFormsHost  Margin="16,18,229,15">
+                    <WindowsFormsHost  Margin="16,18,234,15">
                         <wf:PictureBox x:Name="Display_Windows" BorderStyle="FixedSingle"/>
                     </WindowsFormsHost>
                     <Button x:Name="Test" Style="{StaticResource BaseButton}" Margin="783,199,47,191" Content="Test" FontSize="18" Click="Main_Btn_Click"/>
@@ -55,7 +55,6 @@
             </TabItem>
             <TabItem Header="參數畫面" Style="{StaticResource BaseTabcontrol}">
                 <Grid>
-                    <controls:PieChart Margin="45,27,58,24"/>
 
                 </Grid>
             </TabItem>

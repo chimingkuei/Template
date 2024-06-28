@@ -127,7 +127,6 @@ namespace Template
         //Logger.WriteLog("儲存參數!", LogLevel.General, richTextBoxGeneral);
         #endregion
         Webcam Cam = new Webcam();
-        Thread Open_camera_thread;
         #endregion
 
         #region Main Screen
