@@ -26,7 +26,6 @@ using static Template.BaseLogRecord;
 using DataSphereX;
 using CamNexus;
 using System.Windows.Media.Media3D;
-using DimmerNexus;
 
 namespace Template
 {
@@ -128,7 +127,6 @@ namespace Template
         //Logger.WriteLog("儲存參數!", LogLevel.General, richTextBoxGeneral);
         #endregion
         Webcam Cam = new Webcam();
-        MySQLEngine Do = new MySQLEngine("3306", "root", "Asher19910930");
         #endregion
 
         #region Main Screen

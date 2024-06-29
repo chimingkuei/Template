@@ -13,6 +13,11 @@ namespace DataSphereX
         public string user { get; set; }
         public string password { get; set; }
 
+        /// <summary>
+        /// _port:3306<para/>
+        /// _user:root<para/>
+        /// _password:Asher19910930
+        /// </summary>
         public MySQLEngine(string _port, string _user, string _password)
         {
             port = _port;
