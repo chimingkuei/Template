@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InnovaControls", "InnovaCon
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DimmerNexus", "DimmerNexus\DimmerNexus.csproj", "{68DB314B-70D3-4C04-B890-F7D1C02F5EC5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TitanVision", "TitanVision\TitanVision.csproj", "{FC866BD8-C427-4F44-A099-FD47995C0301}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,14 @@ Global
 		{68DB314B-70D3-4C04-B890-F7D1C02F5EC5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{68DB314B-70D3-4C04-B890-F7D1C02F5EC5}.Release|x64.ActiveCfg = Release|Any CPU
 		{68DB314B-70D3-4C04-B890-F7D1C02F5EC5}.Release|x64.Build.0 = Release|Any CPU
+		{FC866BD8-C427-4F44-A099-FD47995C0301}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC866BD8-C427-4F44-A099-FD47995C0301}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC866BD8-C427-4F44-A099-FD47995C0301}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{FC866BD8-C427-4F44-A099-FD47995C0301}.Debug|x64.Build.0 = Debug|Any CPU
+		{FC866BD8-C427-4F44-A099-FD47995C0301}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC866BD8-C427-4F44-A099-FD47995C0301}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC866BD8-C427-4F44-A099-FD47995C0301}.Release|x64.ActiveCfg = Release|Any CPU
+		{FC866BD8-C427-4F44-A099-FD47995C0301}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
