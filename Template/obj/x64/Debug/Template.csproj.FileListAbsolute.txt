@@ -519,3 +519,6 @@ D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\System.Threadi
 D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\K4os.Compression.LZ4.xml
 D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\System.IO.Pipelines.xml
 D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\K4os.Hash.xxHash.xml
+D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\TitanVision.dll
+D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\TitanVision.pdb
+D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\TitanVision.dll.config

@@ -26,6 +26,7 @@ using static Template.BaseLogRecord;
 using DataSphereX;
 using CamNexus;
 using System.Windows.Media.Media3D;
+using TitanVision;
 
 namespace Template
 {
@@ -160,7 +161,11 @@ namespace Template
                     }
                 case nameof(Test):
                     {
-                        //Cam.SaveImage(@"E:\Temp\1.bmp");
+                        Recognition test = new Recognition();
+                        Mat src = Cv2.ImRead(@"D:\Chimingkuei\Python\AOI\Original_Image\15_15.jpg");
+                        Mat result = test.EqualizeHist(src);
+                        Cv2.ImShow("Original", src);
+                        Cv2.ImShow("Result", result);
                         break;
                     }
             }
