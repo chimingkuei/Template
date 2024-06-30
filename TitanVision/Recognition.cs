@@ -20,7 +20,7 @@ namespace TitanVision
         }
 
         /// <summary>
-        /// The example of a scalar input parameter is new Scalar(0, 0, 0).
+        /// The example of a Scalar input parameter is new Scalar(x, x, x).
         /// </summary>
         public Mat ExtractHSVColor(Mat src, Scalar lowercolor, Scalar uppercolor, Scalar background = default)
         {
