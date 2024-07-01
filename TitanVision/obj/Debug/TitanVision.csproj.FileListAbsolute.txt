@@ -25,3 +25,9 @@ D:\Chimingkuei\repos\Reference\C#\Template\TitanVision\obj\Debug\TitanVision.csp
 D:\Chimingkuei\repos\Reference\C#\Template\TitanVision\obj\Debug\TitanVis.8AD5756D.Up2Date
 D:\Chimingkuei\repos\Reference\C#\Template\TitanVision\obj\Debug\TitanVision.dll
 D:\Chimingkuei\repos\Reference\C#\Template\TitanVision\obj\Debug\TitanVision.pdb
+D:\Chimingkuei\repos\Reference\C#\Template\TitanVision\bin\Debug\MathNet.Numerics.dll
+D:\Chimingkuei\repos\Reference\C#\Template\TitanVision\bin\Debug\zxing.dll
+D:\Chimingkuei\repos\Reference\C#\Template\TitanVision\bin\Debug\zxing.presentation.dll
+D:\Chimingkuei\repos\Reference\C#\Template\TitanVision\bin\Debug\MathNet.Numerics.xml
+D:\Chimingkuei\repos\Reference\C#\Template\TitanVision\bin\Debug\zxing.xml
+D:\Chimingkuei\repos\Reference\C#\Template\TitanVision\bin\Debug\zxing.presentation.xml

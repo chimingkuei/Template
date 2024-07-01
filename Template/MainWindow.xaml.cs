@@ -161,11 +161,8 @@ namespace Template
                     }
                 case nameof(Test):
                     {
-                        Recognition test = new Recognition();
-                        Mat src = Cv2.ImRead(@"D:\Chimingkuei\Python\AOI\Original_Image\15_15.jpg");
-                        Mat result = test.EqualizeHist(src);
-                        Cv2.ImShow("Original", src);
-                        Cv2.ImShow("Result", result);
+                        Identification test = new Identification();
+                        test.CreateQRCode("123456789", @"C:\Users\chimi\Downloads\test.png");
                         break;
                     }
             }

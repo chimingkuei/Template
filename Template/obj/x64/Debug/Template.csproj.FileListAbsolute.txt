@@ -522,3 +522,7 @@ D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\K4os.Hash.xxHa
 D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\TitanVision.dll
 D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\TitanVision.pdb
 D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\TitanVision.dll.config
+D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\zxing.dll
+D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\MathNet.Numerics.dll
+D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\zxing.xml
+D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\MathNet.Numerics.xml
