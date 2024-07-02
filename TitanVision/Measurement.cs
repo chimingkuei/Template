@@ -156,6 +156,30 @@ namespace TitanVision
             }
         }
 
+        public double CalcSlope(Point p1, Point p2)
+        {
+            double slope = -1;
+            if (p1.X == p2.X)
+            {
+                Console.WriteLine("斜率不存在!");
+            }
+            else
+            {
+                slope = (p2.Y - p1.Y) / (p2.X - p1.X);
+            }
+            return slope;
+        }
+
+        public Tuple<double, double, double> CreateLinearEquation(Point p1, Point p2)
+        {
+            // Equation:mx-y+(b1-ma1)=0
+            double m = CalcSlope(p1, p2);
+            double c = p1.Y - m * p1.X;
+            return Tuple.Create(m, -1.0, c);
+        }
+
+
+
 
     }
 }
