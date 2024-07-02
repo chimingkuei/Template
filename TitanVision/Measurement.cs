@@ -170,14 +170,23 @@ namespace TitanVision
             return slope;
         }
 
+        /// <summary>
+        /// Create the equation mx - y + y0 - mx0 = 0 from two points p1 and p2.
+        /// </summary>
         public Tuple<double, double, double> CreateLinearEquation(Point p1, Point p2)
         {
-            // Equation:mx-y+(b1-ma1)=0
             double m = CalcSlope(p1, p2);
             double c = p1.Y - m * p1.X;
             return Tuple.Create(m, -1.0, c);
         }
 
+        /// <summary>
+        /// Calculate the distance from the point p1 to the LE : ax + by + c = 0.
+        /// </summary>
+        public double DistanceFromPointToLine(Point p1, Tuple<double, double, double> LE)
+        {
+            return Math.Abs(LE.Item1 * p1.X + LE.Item2 * p1.Y + LE.Item3) / Math.Sqrt(LE.Item1 * LE.Item1 + LE.Item2 * LE.Item2);
+        }
 
 
 
