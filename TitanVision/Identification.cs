@@ -8,11 +8,15 @@ using System.Threading.Tasks;
 using ZXing.Common;
 using ZXing;
 using ZXing.QrCode.Internal;
+using Tesseract;
 
 namespace TitanVision
 {
     public class Identification
     {
+        ZXing.IBarcodeReader reader;
+        TesseractEngine ocr;
+
         public Bitmap CreateBarCode(string content, string filepath)
         {
             BarcodeWriter barcodeWriter = new BarcodeWriter
@@ -50,21 +54,21 @@ namespace TitanVision
         }
 
         /// <summary>
-        /// filepath parameter can be a one-dimensional or two-dimensional code.
+        /// The filepath parameter can be a one-dimensional or two-dimensional code.
         /// </summary>
         public void ReadCode(string filepath, out string result)
         {
             result = null;
             if (File.Exists(filepath))
             {
-                ZXing.IBarcodeReader reader = new ZXing.BarcodeReader();
+                reader = new ZXing.BarcodeReader();
                 FileStream fs = new FileStream(filepath, FileMode.Open);
                 Byte[] data = new Byte[fs.Length];
                 fs.Read(data, 0, data.Length);
                 fs.Close();
                 MemoryStream ms = new MemoryStream(data);
                 var bitmap = (Bitmap)Image.FromStream(ms);
-                result = reader.Decode(bitmap)?.ToString() ?? "解碼失敗!";
+                result = reader.Decode(bitmap)?.ToString()??"解碼失敗!";
             }
             else
             {
@@ -72,6 +76,22 @@ namespace TitanVision
             }
         }
 
-
+        public void OCR(string filepath, string language, out string result)
+        {
+            result = null;
+            if (File.Exists(filepath))
+            {
+                ocr = new TesseractEngine("./tessdata", language);
+                Bitmap bit = new Bitmap(Image.FromFile(filepath));
+                Page page = ocr.Process(bit);
+                result = page.GetText();
+                page.Dispose();
+            }
+            else
+            {
+                Console.WriteLine($"{filepath}檔案不存在!");
+            }
+           
+        }
     }
 }
