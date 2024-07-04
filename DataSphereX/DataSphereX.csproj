@@ -108,9 +108,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExcelEngine.cs" />
-    <Compile Include="FTPClientEngine.cs" />
+    <Compile Include="ComNet\FTPClientEngine.cs" />
     <Compile Include="IOHelper.cs" />
-    <Compile Include="MySQLEngine.cs" />
+    <Compile Include="ComNet\MySQLEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

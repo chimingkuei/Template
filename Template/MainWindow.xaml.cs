@@ -162,7 +162,8 @@ namespace Template
                     }
                 case nameof(Test):
                     {
-
+                        MySQLEngine a = new MySQLEngine("3306", "root", "Asher19910930");
+                        a.ShowDatabase();
                         break;
                     }
             }
