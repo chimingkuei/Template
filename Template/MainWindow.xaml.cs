@@ -27,6 +27,7 @@ using DataSphereX;
 using CamNexus;
 using System.Windows.Media.Media3D;
 using TitanVision;
+using DimmerNexus;
 
 namespace Template
 {
@@ -161,8 +162,7 @@ namespace Template
                     }
                 case nameof(Test):
                     {
-                        Identification test = new Identification();
-                        test.CreateQRCode("123456789", @"C:\Users\chimi\Downloads\test.png");
+
                         break;
                     }
             }
