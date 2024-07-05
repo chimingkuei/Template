@@ -116,6 +116,27 @@ namespace Template
             Config.Save(model, serialnumber, SerialNumberClass(), encryption);
         }
         #endregion
+
+        #region Dispatcher Invoke 
+        public string DispatcherGetValue(TextBox control)
+        {
+            string name = "";
+            this.Dispatcher.Invoke(() =>
+            {
+                name = control.Text;
+            });
+            return name;
+
+        }
+
+        public void DispatcherSetValue(string name, TextBox control)
+        {
+            this.Dispatcher.Invoke(() =>
+            {
+                control.Text = name;
+            });
+        }
+        #endregion
         #endregion
 
         #region Parameter and Init
