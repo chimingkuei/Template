@@ -19,9 +19,7 @@ using System.Management;
 
 namespace InnovaControls
 {
-    /// <summary>
-    /// PieChart.xaml 的互動邏輯
-    /// </summary>
+
     public partial class PieChart : UserControl
     {
         private DispatcherTimer timer;
@@ -144,7 +142,7 @@ namespace InnovaControls
             }
         }
 
-        private void Drive_DataClick(object sender, ChartPoint chartPoint)
+        private void DisplayData_Click(object sender, ChartPoint chartPoint)
         {
             // 獲取被點擊的圓餅圖部分的信息
             var series = chartPoint.SeriesView as PieSeries;
@@ -154,5 +152,7 @@ namespace InnovaControls
             // 創建並顯示一個新的視窗以顯示被點擊的圓餅圖部分的信息
             MessageBox.Show($"{partTitle}: {partValue} TB");
         }
+
+
     }
 }

@@ -225,7 +225,7 @@
       <Name>DimmerNexus</Name>
     </ProjectReference>
     <ProjectReference Include="..\InnovaControls\InnovaControls.csproj">
-      <Project>{491cf8bb-5f61-4a9b-8c2e-963d4dd0b9e9}</Project>
+      <Project>{40666f27-7e2f-4bab-98c4-fc5218049355}</Project>
       <Name>InnovaControls</Name>
     </ProjectReference>
     <ProjectReference Include="..\TitanVision\TitanVision.csproj">

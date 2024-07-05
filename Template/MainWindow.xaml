@@ -49,7 +49,6 @@
                     </WindowsFormsHost>
                     <Button x:Name="Test" Style="{StaticResource BaseButton}" Margin="783,199,47,191" Content="Test" FontSize="18" Click="Main_Btn_Click"/>
                     <controls:IndicatorLight x:Name="IndicatorLight" LightColor="#00FF00" Width="32" Height="32" Margin="840,59,100,355"/>
-                    
 
                 </Grid>
             </TabItem>

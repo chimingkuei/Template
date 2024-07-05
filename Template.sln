@@ -9,11 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataSphereX", "DataSphereX\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CamNexus", "CamNexus\CamNexus.csproj", "{445F625C-B9E1-4CDA-BDAE-F8F0D44D8B50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InnovaControls", "InnovaControls\InnovaControls.csproj", "{491CF8BB-5F61-4A9B-8C2E-963D4DD0B9E9}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DimmerNexus", "DimmerNexus\DimmerNexus.csproj", "{68DB314B-70D3-4C04-B890-F7D1C02F5EC5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TitanVision", "TitanVision\TitanVision.csproj", "{FC866BD8-C427-4F44-A099-FD47995C0301}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InnovaControls", "InnovaControls\InnovaControls.csproj", "{40666F27-7E2F-4BAB-98C4-FC5218049355}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,14 +47,6 @@ Global
 		{445F625C-B9E1-4CDA-BDAE-F8F0D44D8B50}.Release|Any CPU.Build.0 = Release|Any CPU
 		{445F625C-B9E1-4CDA-BDAE-F8F0D44D8B50}.Release|x64.ActiveCfg = Release|Any CPU
 		{445F625C-B9E1-4CDA-BDAE-F8F0D44D8B50}.Release|x64.Build.0 = Release|Any CPU
-		{491CF8BB-5F61-4A9B-8C2E-963D4DD0B9E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{491CF8BB-5F61-4A9B-8C2E-963D4DD0B9E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{491CF8BB-5F61-4A9B-8C2E-963D4DD0B9E9}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{491CF8BB-5F61-4A9B-8C2E-963D4DD0B9E9}.Debug|x64.Build.0 = Debug|Any CPU
-		{491CF8BB-5F61-4A9B-8C2E-963D4DD0B9E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{491CF8BB-5F61-4A9B-8C2E-963D4DD0B9E9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{491CF8BB-5F61-4A9B-8C2E-963D4DD0B9E9}.Release|x64.ActiveCfg = Release|Any CPU
-		{491CF8BB-5F61-4A9B-8C2E-963D4DD0B9E9}.Release|x64.Build.0 = Release|Any CPU
 		{68DB314B-70D3-4C04-B890-F7D1C02F5EC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{68DB314B-70D3-4C04-B890-F7D1C02F5EC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68DB314B-70D3-4C04-B890-F7D1C02F5EC5}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -71,6 +63,14 @@ Global
 		{FC866BD8-C427-4F44-A099-FD47995C0301}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FC866BD8-C427-4F44-A099-FD47995C0301}.Release|x64.ActiveCfg = Release|Any CPU
 		{FC866BD8-C427-4F44-A099-FD47995C0301}.Release|x64.Build.0 = Release|Any CPU
+		{40666F27-7E2F-4BAB-98C4-FC5218049355}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40666F27-7E2F-4BAB-98C4-FC5218049355}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40666F27-7E2F-4BAB-98C4-FC5218049355}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{40666F27-7E2F-4BAB-98C4-FC5218049355}.Debug|x64.Build.0 = Debug|Any CPU
+		{40666F27-7E2F-4BAB-98C4-FC5218049355}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40666F27-7E2F-4BAB-98C4-FC5218049355}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40666F27-7E2F-4BAB-98C4-FC5218049355}.Release|x64.ActiveCfg = Release|Any CPU
+		{40666F27-7E2F-4BAB-98C4-FC5218049355}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
