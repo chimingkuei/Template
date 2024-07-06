@@ -167,7 +167,7 @@ namespace DataSphereX
         }
         #endregion
 
-        #region Mouse action
+        #region Mouse Event
         #region SetCursorPos
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
