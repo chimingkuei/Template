@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Management;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace DataSphereX
@@ -68,6 +70,28 @@ namespace DataSphereX
             }
         }
 
-        
+        #region Software Lock
+        private string GetBoardSerialNumber()
+        {
+            string boardSerial = string.Empty;
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT SerialNumber FROM Win32_BaseBoard");
+            foreach (ManagementObject mo in searcher.Get())
+            {
+                boardSerial = mo["SerialNumber"].ToString();
+                break;
+            }
+            return boardSerial;
+        }
+
+        public void Lock(string boardSerial)
+        {
+            if (GetBoardSerialNumber() != boardSerial)
+            {
+                Console.WriteLine("軟體2秒後關閉，請聯繫廠商提供Licence!");
+                Thread.Sleep(2000);
+                Environment.Exit(0);
+            }
+        }
+        #endregion
     }
 }

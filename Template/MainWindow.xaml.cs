@@ -120,20 +120,19 @@ namespace Template
         #region Dispatcher Invoke 
         public string DispatcherGetValue(TextBox control)
         {
-            string name = "";
+            string content = "";
             this.Dispatcher.Invoke(() =>
             {
-                name = control.Text;
+                content = control.Text;
             });
-            return name;
-
+            return content;
         }
 
-        public void DispatcherSetValue(string name, TextBox control)
+        public void DispatcherSetValue(string content, TextBox control)
         {
             this.Dispatcher.Invoke(() =>
             {
-                control.Text = name;
+                control.Text = content;
             });
         }
         #endregion
