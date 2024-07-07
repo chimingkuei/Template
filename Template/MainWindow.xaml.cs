@@ -136,6 +136,64 @@ namespace Template
             });
         }
         #endregion
+
+        #region NotifyIcon
+        private System.Windows.Forms.NotifyIcon notifyIcon = null;
+        System.Windows.Forms.ContextMenu nIconMenu = new System.Windows.Forms.ContextMenu();
+        System.Windows.Forms.MenuItem nIconMenuItem1 = new System.Windows.Forms.MenuItem();
+        System.Windows.Forms.MenuItem nIconMenuItem2 = new System.Windows.Forms.MenuItem();
+        private void NotifyIconInit()
+        {
+            string projectName = Assembly.GetEntryAssembly()?.GetName().Name;
+            notifyIcon = new System.Windows.Forms.NotifyIcon
+            {
+                Icon = new System.Drawing.Icon(@"Icon/Deepwise.ico"),
+                Text = projectName,
+                Visible = true,
+                ContextMenu = nIconMenu
+            };
+            notifyIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(NotifyIcon_MouseClick);
+            this.StateChanged += new EventHandler(UI_StateChanged);
+            // 設定小圖示選單
+            nIconMenuItem1.Text = "結束1";
+            nIconMenuItem1.Click += new System.EventHandler(nIconMenuItem1_Click);
+            nIconMenu.MenuItems.Add(nIconMenuItem1);
+            nIconMenuItem2.Text = "結束2";
+            nIconMenuItem2.Click += new System.EventHandler(nIconMenuItem2_Click);
+            nIconMenu.MenuItems.Add(nIconMenuItem2);
+        }
+        private void NotifyIcon_MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                if (this.Visibility == Visibility.Visible)
+                {
+                    this.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    this.Show();
+                    this.WindowState = (WindowState)System.Windows.Forms.FormWindowState.Normal;
+                }
+
+            }
+        }
+        private void UI_StateChanged(object sender, EventArgs e)
+        {
+            if (this.WindowState == WindowState.Minimized)
+            {
+                this.Visibility = Visibility.Hidden;
+            }
+        }
+        private void nIconMenuItem1_Click(object sender, System.EventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
+        private void nIconMenuItem2_Click(object sender, System.EventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
+        #endregion
         #endregion
 
         #region Parameter and Init
