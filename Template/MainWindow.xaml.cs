@@ -28,6 +28,7 @@ using CamNexus;
 using System.Windows.Media.Media3D;
 using TitanVision;
 using DimmerNexus;
+using System.Drawing;
 
 namespace Template
 {
@@ -208,7 +209,7 @@ namespace Template
         #endregion
         Webcam Cam = new Webcam();
         #endregion
-
+        
         #region Main Screen
         private void Main_Btn_Click(object sender, RoutedEventArgs e)
         {

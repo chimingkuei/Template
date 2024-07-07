@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="501" d:DesignWidth="680">
     <Grid x:Name="Grid" MouseDown="DrawROI_MouseDown" MouseUp="DrawROI_MouseUp" MouseMove="DrawROI_MouseMove" Margin="11,3,2,10">
-        <Image x:Name="Display_Screen" Margin="2,0,2,-3" Source="Background.bmp"/>
+        <Image x:Name="Display_Screen" Source="{Binding ImageSource, RelativeSource={RelativeSource AncestorType=UserControl}}" Margin="2,0,2,-3"/>
         <!--<Ellipse x:Name="Ellipse" StrokeThickness="2" Stroke="Red" Margin="234,112,175,137"/>-->
         <Rectangle x:Name="Rectangle" StrokeThickness="2" Stroke="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="137,251,0,0" Height="80" Width="80"/>
     </Grid>

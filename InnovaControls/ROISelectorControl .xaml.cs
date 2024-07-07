@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Media.Media3D;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
@@ -63,6 +64,24 @@ namespace InnovaControls
                 #endregion
             }
         }
+
+        #region Image Control Register
+        public static readonly DependencyProperty ImageSourceProperty =
+        DependencyProperty.Register(nameof(ImageSource), typeof(BitmapImage), typeof(ROISelectorControl), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender));
+
+        public BitmapImage ImageSource
+        {
+            get { return (BitmapImage)GetValue(ImageSourceProperty); }
+            set { SetValue(ImageSourceProperty, value); }
+        }
+        #region Use
+        //BitmapImage bitmapImage = new BitmapImage();
+        //bitmapImage.BeginInit();
+        //bitmapImage.UriSource = new Uri("pack://application:,,,/Icon/Image.png");
+        //bitmapImage.EndInit();
+        //Control.ImageSource = bitmapImage;
+        #endregion
+        #endregion
 
 
     }
