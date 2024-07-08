@@ -60,25 +60,7 @@ namespace DataSphereX
             }
         }
 
-        /// <summary>
-        /// Reading the value of a cell from a specified worksheet in an Excel file.
-        /// </summary>
-        /// <param name="filepath">
-        /// The path to the Excel file.
-        /// </param>
-        /// <param name="sheetname">
-        /// The name or index of the worksheet. This parameter can be either a string (worksheet name) or an int (worksheet index).
-        /// </param>
-        /// <param name="searchmodel">
-        /// The search model to use. "all" retrieves all data from the worksheet, "one" searches for a specific value in the specified column.
-        /// </param>
-        /// <param name="data">
-        /// Output parameter to hold the data read from the Excel sheet.
-        /// </param>
-        /// <param name="tuple">
-        /// A tuple containing the column index and search value for the "one" search model.
-        /// </param>
-        public void ReadExcel<T>(string filepath, object sheetname, string searchmodel, out List<T> data, Tuple<int, string> tuple = null)
+        public void ReadExcel<T>(string filepath, object sheetname, string searchmodel, out List<T> data, Tuple<int, string> validation= null)
         {
             data = new List<T>();
             if (File.Exists(filepath))
@@ -141,10 +123,10 @@ namespace DataSphereX
                     {
                         for (int row = 1; row <= rowCount; row++)
                         {
-                            var contstr = worksheet.Cells[row, tuple.Item1].Value;
+                            var contstr = worksheet.Cells[row, validation.Item1].Value;
                             if (contstr != null)
                             {
-                                if (contstr.ToString() == tuple.Item2)
+                                if (contstr.ToString() == validation.Item2)
                                 {
                                     data.Add((T)(object)row);
                                     break;
@@ -160,19 +142,14 @@ namespace DataSphereX
             }
         }
 
-        public void ModifyExcel(string filepath)
+        public void ModifyExcel(string filepath, int row, int col, string modify)
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-            // 路徑到Excel文件
             var fileInfo = new FileInfo(filepath);
-            // 使用ExcelPackage讀取Excel文件
             using (var package = new ExcelPackage(fileInfo))
             {
-                // 取得第一個工作表
                 var worksheet = package.Workbook.Worksheets[0];
-                // 修改單元格的值
-                worksheet.Cells[1, 1].Value = "Hello, world!";
-                // 保存Excel文件
+                worksheet.Cells[row, col].Value = modify;
                 package.Save();
             }
         }
