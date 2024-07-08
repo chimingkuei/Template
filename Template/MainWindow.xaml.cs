@@ -241,7 +241,7 @@ namespace Template
                     }
                 case nameof(Test):
                     {
-                        
+
                         break;
                     }
             }

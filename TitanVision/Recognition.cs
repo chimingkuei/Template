@@ -64,7 +64,54 @@ namespace TitanVision
             return dst;
         }
 
-       
+        public void VerticalProjection(Mat src, double threshold, string filepath = null)
+        {
+            Mat binaryImg = Binarization(src, threshold);
+            int[] verticalProjection = new int[binaryImg.Cols];
+            for (int i = 0; i < binaryImg.Cols; i++)
+            {
+                Mat col = binaryImg.Col(i);
+                int nonZeroCount = Cv2.CountNonZero(col);
+                verticalProjection[i] = binaryImg.Rows - nonZeroCount;
+            }
+            if (filepath!=null)
+            {
+                Mat projectionImage = new Mat(new Size(binaryImg.Cols, binaryImg.Rows), MatType.CV_8UC3, Scalar.White);
+                for (int j = 0; j < binaryImg.Cols; j++)
+                {
+                    int startPoint = projectionImage.Rows;
+                    int endPoint = projectionImage.Rows - verticalProjection[j];
+                    Cv2.Line(projectionImage, new Point(j, startPoint), new Point(j, endPoint), Scalar.Black);
+                }
+                Cv2.ImWrite(filepath, projectionImage);
+            }
+        }
+
+        public void HorizontalProjection(Mat src, double threshold, string filepath = null)
+        {
+            Mat binaryImg = Binarization(src, threshold);
+            int[] horizontalProjection = new int[binaryImg.Rows];
+            for (int i = 0; i < binaryImg.Rows; i++)
+            {
+                Mat row = binaryImg.Row(i);
+                int nonZeroCount = Cv2.CountNonZero(row);
+                horizontalProjection[i] = binaryImg.Cols - nonZeroCount;
+            }
+            if (filepath != null)
+            {
+                Mat projectionImage = new Mat(new Size(binaryImg.Cols, binaryImg.Rows), MatType.CV_8UC3, Scalar.White);
+                for (int j = 0; j < binaryImg.Rows; j++)
+                {
+                    int startPoint = projectionImage.Cols;
+                    int endPoint = projectionImage.Cols - horizontalProjection[j];
+                    Cv2.Line(projectionImage, new Point(startPoint, j), new Point(endPoint, j), Scalar.Black);
+                }
+                Cv2.ImWrite(filepath, projectionImage);
+            }
+        }
+
+        
+
 
 
     }
