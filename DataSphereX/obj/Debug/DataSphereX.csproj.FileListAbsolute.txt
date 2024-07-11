@@ -42,3 +42,5 @@ D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\bin\Debug\System.Memory.x
 D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\bin\Debug\System.Numerics.Vectors.xml
 D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\bin\Debug\netDxf.dll
+D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\bin\Debug\netDxf.xml
