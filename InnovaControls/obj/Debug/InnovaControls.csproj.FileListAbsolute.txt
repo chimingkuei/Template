@@ -22,3 +22,5 @@ D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\PieChart.bam
 D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\InnovaCo.015B6597.Up2Date
 D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\ROISelectorControl .g.cs
 D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\ROISelectorControl .baml
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\SubWindow.g.cs
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\SubWindow.baml
