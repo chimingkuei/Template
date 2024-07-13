@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace TitanVision
 {
-    public class Measurement
+    public class Measurement : SharpVision
     {
         /// <summary>
         /// The example of a Point input parameter is new OpenCvSharp.Point(x, x).

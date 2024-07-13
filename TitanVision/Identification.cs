@@ -12,7 +12,7 @@ using Tesseract;
 
 namespace TitanVision
 {
-    public class Identification
+    public class Identification : SharpVision
     {
         ZXing.IBarcodeReader reader;
         TesseractEngine ocr;

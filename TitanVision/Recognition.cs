@@ -9,12 +9,8 @@ using System.Threading.Tasks;
 
 namespace TitanVision
 {
-    interface IFileManager
-    {
-        void BatchImageTransform(string folderpath, string file_extension, double threshold, Func<Mat, double, Mat> fun);
-    }
 
-    public class Recognition : IFileManager
+    public class Recognition : SharpVision
     {
         public Mat Binarization(Mat src, double threshold)
         {
@@ -116,16 +112,7 @@ namespace TitanVision
             }
         }
 
-        public void BatchImageTransform(string folderpath, string file_extension, double threshold, Func<Mat, double, Mat> fun)
-        {
-            string[] imageFiles = Directory.GetFiles(folderpath, file_extension);
-            foreach (string imageFile in imageFiles)
-            {
-                Mat image = Cv2.ImRead(imageFile, ImreadModes.Color);
-                Mat dst = fun(image, threshold);
-                Cv2.ImWrite(Path.Combine(@"E:\DIP Temp\Image Output", DateTime.Now.ToString("yyyyMMddHHmmssfff")+".bmp"), dst);
-            }
-        }
+       
 
         
 
