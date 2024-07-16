@@ -241,11 +241,6 @@ namespace Template
                         Cam.OpenCamera(0, Display_Windows);
                         break;
                     }
-                case nameof(Test):
-                    {
-
-                        break;
-                    }
             }
         }
         #endregion
