@@ -41,13 +41,13 @@
         <TabControl HorizontalAlignment="Left" Margin="5,3,0,0" VerticalAlignment="Top" Height="478" Width="978" Background="#FFE6F0FF">
             <TabItem Header="主畫面" Style="{StaticResource BaseTabcontrol}">
                 <Grid>
-                    <Button x:Name="Demo" Style="{StaticResource BaseButton}" Margin="779,129,51,261" Content="Demo" FontSize="18" Click="Main_Btn_Click"/>
-                    <TextBox x:Name="Parameter1" Style="{StaticResource BaseTextBox}" Tag="請輸入內容..." Margin="784,302,58,103"/>
-                    <TextBox x:Name="Parameter2" Style="{StaticResource BaseTextBox}" Tag="請輸入內容..." Margin="782,369,60,37"/>
+                    <Button x:Name="Demo" Style="{StaticResource BaseButton}" Margin="785,83,45,307" Content="Demo" FontSize="18" Click="Main_Btn_Click"/>
+                    <TextBox x:Name="Parameter1" Style="{StaticResource BaseTextBox}" Tag="請輸入內容..." Margin="790,193,52,212"/>
+                    <TextBox x:Name="Parameter2" Style="{StaticResource BaseTextBox}" Tag="請輸入內容..." Margin="793,267,49,139"/>
                     <WindowsFormsHost  Margin="16,18,234,15">
                         <wf:PictureBox x:Name="Display_Windows" BorderStyle="FixedSingle"/>
                     </WindowsFormsHost>
-                    <controls:IndicatorLight x:Name="IndicatorLight" LightColor="#00FF00" Width="32" Height="32" Margin="840,59,100,355"/>
+                    <controls:IndicatorLight x:Name="IndicatorLight" LightColor="#00FF00" Width="32" Height="32" Margin="837,361,103,53"/>
                 </Grid>
             </TabItem>
             <TabItem Header="參數畫面" Style="{StaticResource BaseTabcontrol}">

@@ -219,25 +219,6 @@ namespace Template
             {
                 case nameof(Demo):
                     {
-                        //ExcelEngine excel = new ExcelEngine();
-                        //List<string> heater = new List<string> { "值1", "值2", "值3"};
-                        //List<List<string>> data = new List<List<string>>
-                        //{
-                        //    new List<string> { "A1", "B1", "C1" },
-                        //    new List<string> { "A2", "B2", "C2" },
-                        //    new List<string> { "A3", "B3", "C3" }
-                        //};
-                        //excel.CreateExcel(@"E:\Temp\test.xlsx", "Test", heater, data);
-                        //List<List<string>> data;
-                        //excel.ReadExcel(@"E:\Temp\test.xlsx", 0, "all", out data);
-                        //foreach (var row in data)
-                        //{
-                        //    foreach (var cell in row)
-                        //    {
-                        //        Console.WriteLine(cell);
-                        //    }
-                        //    Console.WriteLine();
-                        //}
                         Cam.OpenCamera(0, Display_Windows);
                         break;
                     }

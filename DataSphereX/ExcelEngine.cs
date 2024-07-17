@@ -25,6 +25,18 @@ namespace DataSphereX
             worksheet.Cells[row, col].Style.Fill.BackgroundColor.SetColor(Color.AliceBlue);
         }
 
+        /// <summary>
+        /// ExcelEngine excel = new ExcelEngine();
+        /// List<string> heater = new List<string> { "值1", "值2", "值3" };
+        /// List<List<string>> data = new List<List<string>>
+        /// {
+        ///     new List<string> { "A1", "B1", "C1" },
+        ///     new List<string> { "A2", "B2", "C2" },
+        ///     new List<string> { "A3", "B3", "C3" }
+        /// };
+        /// excel.CreateExcel(@"E:\Temp\test.xlsx", "Test", heater, data);
+        /// List<List<string>> data;
+        /// </summary>
         public void CreateExcel(string filepath, string sheetname, List<string>header = null, List<List<string>> data = null)
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
