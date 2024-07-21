@@ -44,3 +44,4 @@ D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\bin\Debug\System.Runtime.
 D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\bin\Debug\System.Threading.Tasks.Extensions.xml
 D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\bin\Debug\netDxf.dll
 D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\bin\Debug\netDxf.xml
+D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\obj\Debug\DataSphereX.csproj.ResolveComReference.cache

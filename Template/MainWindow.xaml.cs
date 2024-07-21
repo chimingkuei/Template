@@ -110,7 +110,7 @@ namespace Template
                     new RootObject { Models = models },
                     new RootObject { Models = models }
                 };
-                Config.InitSave(rootObjects, encryption);
+                Config.SaveInit(rootObjects, encryption);
             }
         }
        

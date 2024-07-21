@@ -46,7 +46,7 @@ namespace Template
             File.Copy(config_path, config_path.Split('.')[0] + "_Backup" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".json");
         }
 
-        public void InitSave(List<T> record, bool encryption = false)
+        public void SaveInit(List<T> record, bool encryption = false)
         {
             string jsonData = JsonConvert.SerializeObject(record, Formatting.Indented);
             string dataToWrite = encryption ? AESEncrypt(jsonData) : jsonData;
