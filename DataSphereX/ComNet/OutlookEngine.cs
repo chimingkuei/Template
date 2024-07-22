@@ -12,21 +12,16 @@ namespace DataSphereX.ComNet
 {
     public class OutlookEngine
     {
-        public void SendEmail1()
+        public void SendEmail1(string recipient, string subject, string content)
         {
             // 建立Outlook Application物件
             Application outlookApp = new Application();
-
             // 建立信件物件
             MailItem mail = (MailItem)outlookApp.CreateItem(OlItemType.olMailItem);
-
             // 設定信件的收件人、主旨、內容等資訊
-            mail.To = "chimingkuei@deep-wise.com.tw";
-            mail.Subject = "測試郵件";
-            mail.Body = "這是一封測試郵件。";
-            // 添加附件
-            //string attachmentPath = @"C:\Users\chimi\Downloads\cat.jpg"; // 替換為實際附件路徑
-            //mail.Attachments.Add(attachmentPath, OlAttachmentType.olByValue, Type.Missing, Type.Missing);
+            mail.To = recipient;// "chimingkuei@deep-wise.com.tw"
+            mail.Subject = subject;// "測試郵件"
+            mail.Body = content;// "Dear MK:\n這是一封測試郵件。"
             // 寄出信件
             mail.Send();
         }

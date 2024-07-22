@@ -30,6 +30,7 @@ using TitanVision;
 using DimmerNexus;
 using System.Drawing;
 using InnovaControls;
+using DataSphereX.ComNet;
 
 
 namespace Template
