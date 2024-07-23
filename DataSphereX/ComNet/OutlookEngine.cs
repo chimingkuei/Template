@@ -15,17 +15,19 @@ namespace DataSphereX.ComNet
         public string recipient { get; set; }
         public string subject { get; set; }
         public string shipper { get; set; }
-        public OutlookEngine(string _recipient, string _subject)
+        public OutlookEngine(string _shipper, string _recipient, string _subject)
         {
+            if (string.IsNullOrWhiteSpace(shipper))
+            {
+                throw new System.Exception("Shipper cannot be null or empty for SendEmail2.");
+            }
+            shipper = _shipper;
             recipient = _recipient;
             subject = _subject;
         }
 
-        public OutlookEngine(string _shipper, string _recipient, string _subject)
+        public OutlookEngine(string recipient, string subject): this(null, recipient, subject)
         {
-            shipper = _shipper;
-            recipient = _recipient;
-            subject = _subject;
         }
 
         public void SendEmail1(string content)
