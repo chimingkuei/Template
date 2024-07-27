@@ -1,10 +1,13 @@
 ﻿using OfficeOpenXml;
+using OfficeOpenXml.Drawing;
+using OfficeOpenXml.Drawing.Chart;
 using OfficeOpenXml.Style;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
+using System.IO.Packaging;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -39,11 +42,11 @@ namespace DataSphereX
         /// </summary>
         public void CreateExcel(string filepath, string sheetname, List<string>header = null, List<List<string>> data = null)
         {
-            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             if (!File.Exists(filepath))
             {
-                var excelFile = new ExcelPackage();
-                var worksheet = excelFile.Workbook.Worksheets.Add(sheetname);
+                ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+                var excel = new ExcelPackage();
+                var worksheet = excel.Workbook.Worksheets.Add(sheetname);
                 if (header != null)
                 {
                     for (int index = 0; index < header.Count; index++)
@@ -64,7 +67,7 @@ namespace DataSphereX
                     }
 
                 }
-                excelFile.SaveAs(new FileInfo(filepath));
+                excel.SaveAs(new FileInfo(filepath));
             }
             else
             {
@@ -78,13 +81,13 @@ namespace DataSphereX
             if (File.Exists(filepath))
             {     
                 ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-                var fileInfo = new FileInfo(filepath);
-                using (var package = new ExcelPackage(fileInfo))
+                var excelfile = new FileInfo(filepath);
+                using (var excel = new ExcelPackage(excelfile))
                 {
                     ExcelWorksheet worksheet = null;
                     if (sheetname is string)
                     {
-                        worksheet = package.Workbook.Worksheets[(string)sheetname];
+                        worksheet = excel.Workbook.Worksheets[(string)sheetname];
                         if (worksheet == null)
                         {
                             Console.WriteLine($"{(string)sheetname}工作表找不到!");
@@ -95,7 +98,7 @@ namespace DataSphereX
                     {
                         try
                         {
-                            worksheet = package.Workbook.Worksheets[(int)sheetname];
+                            worksheet = excel.Workbook.Worksheets[(int)sheetname];
                         }
                         catch
                         {
@@ -156,15 +159,70 @@ namespace DataSphereX
 
         public void ModifyExcel(string filepath, int row, int col, string modify)
         {
-            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-            var fileInfo = new FileInfo(filepath);
-            using (var package = new ExcelPackage(fileInfo))
+            if (!File.Exists(filepath))
             {
-                var worksheet = package.Workbook.Worksheets[0];
-                worksheet.Cells[row, col].Value = modify;
-                package.Save();
+                ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+                var excelfile = new FileInfo(filepath);
+                using (var excel = new ExcelPackage(excelfile))
+                {
+                    var worksheet = excel.Workbook.Worksheets[0];
+                    worksheet.Cells[row, col].Value = modify;
+                    excel.Save();
+                }
+            }
+            else
+            {
+                Console.WriteLine($"{filepath}檔案已存在，不允許覆蓋!");
             }
         }
+
+        private bool CheckChartName(ExcelWorksheet worksheet, string chartname)
+        {
+            foreach (ExcelDrawing drawing in worksheet.Drawings)
+            {
+                if (drawing.Name == chartname)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private void SetChartAppearance(ExcelChart chart, Rectangle rect)
+        {
+            chart.SetPosition(rect.X, 0, rect.Y, 0);
+            chart.SetSize(rect.Width, rect.Height);
+            chart.Title.Text = "Title";
+            chart.Legend.Position = eLegendPosition.Right;
+            chart.XAxis.MajorGridlines.Fill.Color = Color.LightGray;
+            chart.XAxis.MajorUnit = 10;
+            chart.XAxis.Title.Text = "X Axis";
+            chart.YAxis.MajorGridlines.Fill.Color = Color.LightGray;
+            chart.YAxis.MajorUnit = 10;
+            chart.YAxis.Title.TextVertical = eTextVerticalType.Vertical270;
+            chart.YAxis.Title.Text = "Y Axis";
+        }
+
+        public void DrawXYScatter(string filepath, string chartnameGp, Rectangle rect)
+        {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            var excelfile = new FileInfo(filepath);
+            var excel = new ExcelPackage(excelfile);
+            var worksheet = excel.Workbook.Worksheets[0];
+            if (!CheckChartName(worksheet, chartnameGp))
+            {
+                ExcelChart chart = worksheet.Drawings.AddChart(chartnameGp, eChartType.XYScatter);
+                SetChartAppearance(chart, rect);
+                var axis_x = worksheet.Cells["A1:A8"];
+                var axis_y = worksheet.Cells["B1:B8"];
+                var axis_series = (ExcelScatterChartSerie)chart.Series.Add(axis_y, axis_x);
+                axis_series.Marker.Style = eMarkerStyle.Circle;
+                axis_series.Fill.Color = Color.AliceBlue;
+                axis_series.Header = "Category";
+            }
+            excel.Save();
+        }
+
     }
 
 }

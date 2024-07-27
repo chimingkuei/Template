@@ -220,7 +220,10 @@ namespace Template
             {
                 case nameof(Demo):
                     {
-                        Cam.OpenCamera(0, Display_Windows);
+                        //Cam.OpenCamera(0, Display_Windows);
+                        ExcelEngine A = new ExcelEngine();
+                        System.Drawing.Rectangle rect = new System.Drawing.Rectangle(3,3,600,400);
+                        A.DrawXYScatter(@"E:\DIP Temp\Image Temp\Test.xlsx", "Test1", rect);
                         break;
                     }
             }
