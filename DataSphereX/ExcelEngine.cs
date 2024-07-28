@@ -16,8 +16,21 @@ using LicenseContext = OfficeOpenXml.LicenseContext;
 
 namespace DataSphereX
 {
+    public class ChartParameters
+    {
+        public string chartname { get; set; }
+        public Rectangle position { get; set; }
+        public string charttitle { get; set; }
+        public string XAxisname { get; set; }
+        public string YAxisname { get; set; }
+        public string XAxisrange { get; set; }
+        public string YAxisrange { get; set; }
+        public string header { get; set; }
+    }
+
     public class ExcelEngine
     {
+
         private void SetCellAppearance(ExcelWorksheet worksheet, int row, int col)
         {
             worksheet.Cells[row, col].Style.Font.Bold = true;
@@ -188,37 +201,52 @@ namespace DataSphereX
             return false;
         }
 
-        private void SetChartAppearance(ExcelChart chart, Rectangle rect)
+        private void SetChartAppearance(ExcelChart chart, ChartParameters parameters)
         {
-            chart.SetPosition(rect.X, 0, rect.Y, 0);
-            chart.SetSize(rect.Width, rect.Height);
-            chart.Title.Text = "Title";
+            chart.SetPosition(parameters.position.X, 0, parameters.position.Y, 0);
+            chart.SetSize(parameters.position.Width, parameters.position.Height);
+            chart.Title.Text = parameters.charttitle;
             chart.Legend.Position = eLegendPosition.Right;
             chart.XAxis.MajorGridlines.Fill.Color = Color.LightGray;
             chart.XAxis.MajorUnit = 10;
-            chart.XAxis.Title.Text = "X Axis";
+            chart.XAxis.Title.Text = parameters.XAxisname;
             chart.YAxis.MajorGridlines.Fill.Color = Color.LightGray;
             chart.YAxis.MajorUnit = 10;
             chart.YAxis.Title.TextVertical = eTextVerticalType.Vertical270;
-            chart.YAxis.Title.Text = "Y Axis";
+            chart.YAxis.Title.Text = parameters.YAxisname;
         }
 
-        public void DrawXYScatter(string filepath, string chartnameGp, Rectangle rect)
+        /// <summary>
+        /// ExcelEngine excel = new ExcelEngine();
+        /// var parameters = new ChartParameters
+        /// {
+        ///     chartname = "Test",
+        ///     position = new System.Drawing.Rectangle(3, 3, 600, 400),
+        ///     charttitle = "Title",
+        ///     XAxisname = "XAxis",
+        ///     YAxisname = "YAxis",
+        ///     XAxisrange = "A1:A8",
+        ///     YAxisrange = "B1:B8",
+        ///     header = "category"
+        /// };
+        /// excel.DrawXYScatter(@"E:\DIP Temp\Image Temp\Test.xlsx", parameters);
+        /// </summary>
+        public void DrawXYScatter(string filepath, ChartParameters parameters)
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             var excelfile = new FileInfo(filepath);
             var excel = new ExcelPackage(excelfile);
             var worksheet = excel.Workbook.Worksheets[0];
-            if (!CheckChartName(worksheet, chartnameGp))
+            if (!CheckChartName(worksheet, parameters.chartname))
             {
-                ExcelChart chart = worksheet.Drawings.AddChart(chartnameGp, eChartType.XYScatter);
-                SetChartAppearance(chart, rect);
-                var axis_x = worksheet.Cells["A1:A8"];
-                var axis_y = worksheet.Cells["B1:B8"];
+                ExcelChart chart = worksheet.Drawings.AddChart(parameters.chartname, eChartType.XYScatter);
+                SetChartAppearance(chart, parameters);
+                var axis_x = worksheet.Cells[parameters.XAxisrange];
+                var axis_y = worksheet.Cells[parameters.YAxisrange];
                 var axis_series = (ExcelScatterChartSerie)chart.Series.Add(axis_y, axis_x);
                 axis_series.Marker.Style = eMarkerStyle.Circle;
                 axis_series.Fill.Color = Color.AliceBlue;
-                axis_series.Header = "Category";
+                axis_series.Header = parameters.header;
             }
             excel.Save();
         }
