@@ -16,7 +16,7 @@ using LicenseContext = OfficeOpenXml.LicenseContext;
 
 namespace DataSphereX
 {
-    public class ChartParameters
+    public class XYScatterChartParameters
     {
         public string chartname { get; set; }
         public Rectangle position { get; set; }
@@ -26,6 +26,14 @@ namespace DataSphereX
         public string XAxisrange { get; set; }
         public string YAxisrange { get; set; }
         public string header { get; set; }
+    }
+    public class HistogramChartParameters
+    {
+        public string chartname { get; set; }
+        public Rectangle position { get; set; }
+        public string charttitle { get; set; }
+        public string XAxisrange { get; set; }
+        public string YAxisrange { get; set; }
     }
 
     public class ExcelEngine
@@ -201,7 +209,7 @@ namespace DataSphereX
             return false;
         }
 
-        private void SetChartAppearance(ExcelChart chart, ChartParameters parameters)
+        private void SetXYScatterChartAppearance(ExcelChart chart, XYScatterChartParameters parameters)
         {
             chart.SetPosition(parameters.position.X, 0, parameters.position.Y, 0);
             chart.SetSize(parameters.position.Width, parameters.position.Height);
@@ -218,7 +226,7 @@ namespace DataSphereX
 
         /// <summary>
         /// ExcelEngine excel = new ExcelEngine();
-        /// var parameters = new ChartParameters
+        /// var parameters = new XYScatterChartParameters
         /// {
         ///     chartname = "Test",
         ///     position = new System.Drawing.Rectangle(3, 3, 600, 400),
@@ -231,7 +239,7 @@ namespace DataSphereX
         /// };
         /// excel.DrawXYScatter(@"E:\DIP Temp\Image Temp\Test.xlsx", parameters);
         /// </summary>
-        public void DrawXYScatter(string filepath, ChartParameters parameters)
+        public void DrawXYScatter(string filepath, XYScatterChartParameters parameters)
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             var excelfile = new FileInfo(filepath);
@@ -240,7 +248,7 @@ namespace DataSphereX
             if (!CheckChartName(worksheet, parameters.chartname))
             {
                 ExcelChart chart = worksheet.Drawings.AddChart(parameters.chartname, eChartType.XYScatter);
-                SetChartAppearance(chart, parameters);
+                SetXYScatterChartAppearance(chart, parameters);
                 var axis_x = worksheet.Cells[parameters.XAxisrange];
                 var axis_y = worksheet.Cells[parameters.YAxisrange];
                 var axis_series = (ExcelScatterChartSerie)chart.Series.Add(axis_y, axis_x);
@@ -251,6 +259,30 @@ namespace DataSphereX
             excel.Save();
         }
 
+        private void SetHistogramChartAppearance(ExcelChart chart, HistogramChartParameters parameters)
+        {
+            chart.SetPosition(parameters.position.X, 0, parameters.position.Y, 0);
+            chart.SetSize(parameters.position.Width, parameters.position.Height);
+            chart.Title.Text = parameters.charttitle;
+            chart.Legend.Remove();
+        }
+
+        public void DrawHistogram(string filepath, HistogramChartParameters parameters)
+        {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            var excelfile = new FileInfo(filepath);
+            var excel = new ExcelPackage(excelfile);
+            var worksheet = excel.Workbook.Worksheets[0];
+            if (!CheckChartName(worksheet, parameters.chartname))
+            {
+                ExcelChart chart = worksheet.Drawings.AddChart(parameters.chartname, eChartType.ColumnClustered);
+                SetHistogramChartAppearance(chart, parameters);
+                var axis_x = worksheet.Cells[parameters.XAxisrange];
+                var axis_y = worksheet.Cells[parameters.YAxisrange];
+                chart.Series.Add(axis_y, axis_x);
+            }
+            excel.Save();
+        }
     }
 
 }
