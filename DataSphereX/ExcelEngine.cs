@@ -35,6 +35,14 @@ namespace DataSphereX
         public string XAxisrange { get; set; }
         public string YAxisrange { get; set; }
     }
+    public class PieChartParameters
+    {
+        public string chartname { get; set; }
+        public Rectangle position { get; set; }
+        public string charttitle { get; set; }
+        public string XAxisrange { get; set; }
+        public string YAxisrange { get; set; }
+    }
 
     public class ExcelEngine
     {
@@ -277,6 +285,30 @@ namespace DataSphereX
             {
                 ExcelChart chart = worksheet.Drawings.AddChart(parameters.chartname, eChartType.ColumnClustered);
                 SetHistogramChartAppearance(chart, parameters);
+                var axis_x = worksheet.Cells[parameters.XAxisrange];
+                var axis_y = worksheet.Cells[parameters.YAxisrange];
+                chart.Series.Add(axis_y, axis_x);
+            }
+            excel.Save();
+        }
+
+        private void SetPieChartAppearance(ExcelChart chart, PieChartParameters parameters)
+        {
+            chart.SetPosition(parameters.position.X, 0, parameters.position.Y, 0);
+            chart.SetSize(parameters.position.Width, parameters.position.Height);
+            chart.Title.Text = parameters.charttitle;
+        }
+
+        public void DrawPie(string filepath, PieChartParameters parameters)
+        {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            var excelfile = new FileInfo(filepath);
+            var excel = new ExcelPackage(excelfile);
+            var worksheet = excel.Workbook.Worksheets[0];
+            if (!CheckChartName(worksheet, parameters.chartname))
+            {
+                ExcelChart chart = worksheet.Drawings.AddChart(parameters.chartname, eChartType.Pie);
+                SetPieChartAppearance(chart, parameters);
                 var axis_x = worksheet.Cells[parameters.XAxisrange];
                 var axis_y = worksheet.Cells[parameters.YAxisrange];
                 chart.Series.Add(axis_y, axis_x);
