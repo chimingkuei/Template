@@ -1,11 +1,16 @@
 ﻿using OpenCvSharp;
+using OpenCvSharp.Extensions;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Point = OpenCvSharp.Point;
+using Size = OpenCvSharp.Size;
 
 namespace TitanVision
 {
@@ -112,7 +117,30 @@ namespace TitanVision
             }
         }
 
-       
+        private ImageCodecInfo GetEncoder(ImageFormat format)
+        {
+            ImageCodecInfo[] codecs = ImageCodecInfo.GetImageDecoders();
+            foreach (ImageCodecInfo codec in codecs)
+            {
+                if (codec.FormatID == format.Guid)
+                {
+                    return codec;
+                }
+            }
+            return null;
+        }
+
+        public void BmpToJpg(Mat src, string outputfile)
+        {
+            Bitmap bmp = BitmapConverter.ToBitmap(src);
+            // 獲取 JPEG 編解碼器
+            ImageCodecInfo jpegCodec = GetEncoder(ImageFormat.Jpeg);
+            // 設置壓縮質量參數
+            EncoderParameters encoderParameters = new EncoderParameters(1);
+            encoderParameters.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 90L);
+            bmp.Save(outputfile, jpegCodec, encoderParameters);
+            bmp.Dispose();
+        }
 
         
 

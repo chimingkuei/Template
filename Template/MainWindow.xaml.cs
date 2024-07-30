@@ -220,13 +220,13 @@ namespace Template
             {
                 case nameof(Demo):
                     {
-                        Cam.OpenCamera(0, Display_Windows);
+                        //Cam.OpenCamera(0, Display_Windows);
                         break;
                     }
             }
         }
         #endregion
-        
 
+       
     }
 }
