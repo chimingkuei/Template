@@ -114,6 +114,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ComNet\OutlookEngine.cs" />
+    <Compile Include="ComNet\PrinterEngine.cs" />
     <Compile Include="DXFEngine.cs" />
     <Compile Include="ExcelEngine.cs" />
     <Compile Include="ComNet\FTPClientEngine.cs" />
