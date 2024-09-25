@@ -52,7 +52,7 @@
             </TabItem>
             <TabItem Header="參數畫面" Style="{StaticResource BaseTabcontrol}">
                 <Grid>
-                    
+
                 </Grid>
             </TabItem>
         </TabControl>

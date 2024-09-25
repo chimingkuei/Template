@@ -55,6 +55,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuildingBlock.xaml.cs">
+      <DependentUpon>BuildingBlock.xaml</DependentUpon>
+    </Compile>
     <Compile Include="IndicatorLight.xaml.cs" />
     <Compile Include="PieChart.xaml.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -87,6 +90,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="BuildingBlock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="IndicatorLight.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -24,3 +24,5 @@ D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\ROISelectorC
 D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\ROISelectorControl .baml
 D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\SubWindow.g.cs
 D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\SubWindow.baml
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\BuildingBlock.g.cs
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\BuildingBlock.baml
