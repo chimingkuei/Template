@@ -1,4 +1,6 @@
 ﻿using Basler.Pylon;
+using OpenCvSharp;
+using OpenCvSharp.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -17,55 +19,49 @@ namespace CamNexus
         private PixelDataConverter converter = new PixelDataConverter();
         private Stopwatch stopWatch = new Stopwatch();
         public PictureBox display = new PictureBox();
-        public bool save_image;
-        public string filepath;
+        public Mat image { get; set; }
+        private ImageFormat ImageFormatType { get; set; }
 
         private void OnImageGrabbed(Object sender, ImageGrabbedEventArgs e)
         {
             try
             {
-                // Acquire the image from the camera. Only show the latest image. The camera may acquire images faster than the images can be displayed.
-
-                // Get the grab result.
                 IGrabResult grabResult = e.GrabResult;
-
-                // Check if the image can be displayed.
                 if (grabResult.IsValid)
                 {
-                    // Reduce the number of displayed images to a reasonable amount if the camera is acquiring images very fast.
                     if (!stopWatch.IsRunning || stopWatch.ElapsedMilliseconds > 33)
                     {
                         stopWatch.Restart();
-
-                        Bitmap bitmap = new Bitmap(grabResult.Width, grabResult.Height, System.Drawing.Imaging.PixelFormat.Format32bppRgb);
-                        // Lock the bits of the bitmap.
-                        System.Drawing.Imaging.BitmapData bmpData = bitmap.LockBits(new System.Drawing.Rectangle(0, 0, bitmap.Width, bitmap.Height), System.Drawing.Imaging.ImageLockMode.ReadWrite, bitmap.PixelFormat);
-                        // Place the pointer to the buffer of the bitmap.
-                        converter.OutputPixelFormat = PixelType.BGRA8packed;
-                        IntPtr ptrBmp = bmpData.Scan0;
-                        converter.Convert(ptrBmp, bmpData.Stride * bitmap.Height, grabResult);
-                        bitmap.UnlockBits(bmpData);
-                        #region DIP
-                        //OpenCvSharp.Mat src = OpenCvSharp.Extensions.BitmapConverter.ToMat(bitmap);
-                        //OpenCvSharp.Mat result = src.Threshold(150, 255, OpenCvSharp.ThresholdTypes.Binary);
-                        #endregion
-                        if (save_image)
+                        Mat mat = null;
+                        switch (ImageFormatType)
                         {
-                            bitmap.Save(Path.Combine(filepath, DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".bmp"));
-                            save_image = false;
+                            case ImageFormat.RGB8:
+                                {
+                                    mat = new Mat(grabResult.Height, grabResult.Width, MatType.CV_8UC3);
+                                    converter.OutputPixelFormat = PixelType.BGR8packed;
+                                    break;
+                                }
+                            case ImageFormat.Mono8:
+                                {
+                                    mat = new Mat(grabResult.Height, grabResult.Width, MatType.CV_8UC1);
+                                    converter.OutputPixelFormat = PixelType.Mono8;
+                                    break;
+                                }
                         }
-                        // Assign a temporary variable to dispose the bitmap after assigning the new bitmap to the display control.
+                        IntPtr ptrMat = mat.Data;
+                        converter.Convert(ptrMat, mat.Step() * mat.Rows, grabResult);
+                        image = mat;
                         Bitmap bitmapOld = display.Image as Bitmap;
-                        // Provide the display control with the new bitmap. This action automatically updates the display.
-                        display.Image = bitmap;
-                        #region Show DIP Result
-                        //Display_Windows.Image = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(result);
-                        #endregion
+                        display.Image = mat.ToBitmap();
                         if (bitmapOld != null)
                         {
-                            // Dispose the bitmap.
                             bitmapOld.Dispose();
                         }
+
+
+
+
+
                     }
                 }
             }
@@ -135,11 +131,6 @@ namespace CamNexus
             {
                 ShowException(exception);
             }
-        }
-
-        public override void SaveImage(string filepath)
-        {
-            save_image = true;
         }
 
         public void SetGamma(double value)

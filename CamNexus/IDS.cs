@@ -164,7 +164,7 @@ namespace CamNexus
             }
         }
 
-        public override void SaveImage(string filepath)
+        public void SaveImage(string filepath)
         {
             // Method One
             m_Camera.Image.Save(filepath);

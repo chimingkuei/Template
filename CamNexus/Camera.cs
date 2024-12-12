@@ -12,11 +12,15 @@ using System.Windows.Forms;
 
 namespace CamNexus
 {
+    enum ImageFormat
+    {
+        RGB8, Mono8
+    }
+
     public abstract class Cam
     {
         abstract public void CameraInit(int CamID);
         abstract public void ContinueAcquisition();
         abstract public void StopAcquisition();
-        abstract public void SaveImage(string filepath);
     }
 }
