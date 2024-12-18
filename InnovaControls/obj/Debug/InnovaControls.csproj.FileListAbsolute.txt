@@ -26,3 +26,8 @@ D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\SubWindow.g.
 D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\SubWindow.baml
 D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\BuildingBlock.g.cs
 D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\BuildingBlock.baml
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\bin\Debug\SharpDX.DirectInput.dll
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\bin\Debug\SharpDX.dll
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\bin\Debug\SharpDX.pdb
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\bin\Debug\SharpDX.DirectInput.pdb
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\bin\Debug\SharpDX.DirectInput.xml
