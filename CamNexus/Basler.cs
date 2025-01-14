@@ -35,7 +35,7 @@ namespace CamNexus
                         Mat mat = null;
                         switch (ImageFormatType)
                         {
-                            case ImageFormat.RGB8:
+                            case ImageFormat.BGR8:
                                 {
                                     mat = new Mat(grabResult.Height, grabResult.Width, MatType.CV_8UC3);
                                     converter.OutputPixelFormat = PixelType.BGR8packed;

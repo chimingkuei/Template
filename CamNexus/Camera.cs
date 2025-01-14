@@ -14,7 +14,7 @@ namespace CamNexus
 {
     enum ImageFormat
     {
-        RGB8, Mono8
+        BGR8, Mono8
     }
 
     public abstract class Cam

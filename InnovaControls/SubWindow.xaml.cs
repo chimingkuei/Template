@@ -22,6 +22,13 @@ namespace InnovaControls
             InitializeComponent();
         }
 
+        #region  Parameter and Init
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            
+        }
+        #endregion
+
         // 宣告委派
         public delegate void ActionEventHandller(string msg);
         // 宣告事件
@@ -41,5 +48,7 @@ namespace InnovaControls
         //win.Action += DisplayMSG;
         //win.ShowDialog();
         #endregion
+
+        
     }
 }
