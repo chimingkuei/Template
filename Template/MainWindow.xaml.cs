@@ -198,6 +198,40 @@ namespace Template
             System.Windows.Application.Current.Shutdown();
         }
         #endregion
+
+        #region Language_Switch
+        //private void Language_Switch(object sender, SelectionChangedEventArgs e)
+        //{
+        //    if (sender is ComboBox comboBox && comboBox.SelectedItem is ComboBoxItem selectedItem)
+        //    {
+        //        if (selectedItem.Content is StackPanel stackPanel)
+        //        {
+        //            string langCode = stackPanel.Tag.ToString();
+        //            ResourceDictionary dict = new ResourceDictionary();
+        //            switch (langCode)
+        //            {
+        //                case "en-US":
+        //                    {
+        //                        dict.Source = new Uri("pack://SiteOfOrigin:,,,/Lang/en-US.xaml", UriKind.Absolute);
+        //                        break;
+        //                    }
+        //                case "zh-TW":
+        //                    {
+        //                        dict.Source = new Uri("pack://SiteOfOrigin:,,,/Lang/zh-TW.xaml", UriKind.Absolute);
+        //                        break;
+        //                    }
+        //                case "zh-CN":
+        //                    {
+        //                        dict.Source = new Uri("pack://SiteOfOrigin:,,,/Lang/zh-CN.xaml", UriKind.Absolute);
+        //                        break;
+        //                    }
+        //            }
+        //            System.Windows.Application.Current.Resources.MergedDictionaries[10] = dict;
+        //        }
+        //    }
+
+        //}
+        #endregion 
         #endregion
 
         #region Parameter and Init

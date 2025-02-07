@@ -1,0 +1,7 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <sys:String x:Key="US">en-US</sys:String>
+    <sys:String x:Key="CN">en-CN</sys:String>
+    <sys:String x:Key="TW">en-TW</sys:String>
+</ResourceDictionary>
