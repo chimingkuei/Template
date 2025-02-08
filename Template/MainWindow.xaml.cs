@@ -199,7 +199,30 @@ namespace Template
         }
         #endregion
 
-        #region Language_Switch
+        #region Language Switch
+        #region Control Usage
+        //<ComboBox Height = "60" Margin="5" Width="200" SelectionChanged="Language_Switch">
+        //    <ComboBoxItem IsSelected = "True" >
+        //        < StackPanel Orientation="Horizontal" Tag="en-US">
+        //            <Image Source = "/Icon/DeepWise.png" Width="32" Height="32" Margin="10"/>
+        //            <TextBlock Text = "{DynamicResource US}" VerticalAlignment="Center"/>
+        //        </StackPanel>
+        //    </ComboBoxItem>
+        //    <ComboBoxItem>
+        //        <StackPanel Orientation = "Horizontal" Tag="zh-CN">
+        //            <Image Source = "/Icon/DeepWise.png" Width="32" Height="32" Margin="10"/>
+        //            <TextBlock Text = "{DynamicResource CN}" VerticalAlignment="Center"/>
+        //        </StackPanel>
+        //    </ComboBoxItem>
+        //    <ComboBoxItem>
+        //        <StackPanel Orientation = "Horizontal" Tag="zh-TW">
+        //            <Image Source = "/Icon/DeepWise.png" Width="32" Height="32" Margin="10"/>
+        //            <TextBlock Text = "{DynamicResource TW}" VerticalAlignment="Center"/>
+        //        </StackPanel>
+        //    </ComboBoxItem>
+        //</ComboBox>
+        #endregion
+        #region Code Usage
         //private void Language_Switch(object sender, SelectionChangedEventArgs e)
         //{
         //    if (sender is ComboBox comboBox && comboBox.SelectedItem is ComboBoxItem selectedItem)
@@ -229,9 +252,9 @@ namespace Template
         //            System.Windows.Application.Current.Resources.MergedDictionaries[10] = dict;
         //        }
         //    }
-
         //}
-        #endregion 
+        #endregion
+        #endregion
         #endregion
 
         #region Parameter and Init
