@@ -269,7 +269,8 @@
     <Error Condition="!Exists('..\packages\OpenCvSharp4.runtime.win.4.6.0.20220608\build\net48\OpenCvSharp4.runtime.win.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\OpenCvSharp4.runtime.win.4.6.0.20220608\build\net48\OpenCvSharp4.runtime.win.props'))" />
   </Target>
   <PropertyGroup>
-    <PreBuildEvent>copy "$(ProjectDir)Lang\en-US.xaml" "$(TargetDir)Lang\en-US.xaml"
+    <PreBuildEvent>if not exist "$(TargetDir)Lang" mkdir "$(TargetDir)Lang"
+copy "$(ProjectDir)Lang\en-US.xaml" "$(TargetDir)Lang\en-US.xaml"
 copy "$(ProjectDir)Lang\zh-CN.xaml" "$(TargetDir)Lang\zh-CN.xaml"
 copy "$(ProjectDir)Lang\zh-TW.xaml" "$(TargetDir)Lang\zh-TW.xaml"</PreBuildEvent>
   </PropertyGroup>
