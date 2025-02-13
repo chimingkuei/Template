@@ -8,12 +8,12 @@
             <Setter.Value>
                 <ControlTemplate TargetType="RadioButton">
                     <DockPanel  Background="{TemplateBinding Background}" ToolTip="{TemplateBinding Content}" LastChildFill="False" Width="{TemplateBinding Width}">
-                        <Image Margin="2 0 0 0" DockPanel.Dock="Left" x:Name="_img"  Stretch="None" Source="RadioButtonNoIcon.png"/>
+                        <Image Margin="2 0 0 0" DockPanel.Dock="Left" x:Name="_img"  Stretch="None" Source="../Icon/RadioButtonNoIcon.png"/>
                         <TextBlock DockPanel.Dock="Left" Margin="3 0 0 0" VerticalAlignment="Center" Foreground="{TemplateBinding Foreground}" Text="{TemplateBinding Content}" />
                     </DockPanel>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="true">
-                            <Setter TargetName="_img" Property="Source" Value="RadioButtonYesIcon.png"/>
+                            <Setter TargetName="_img" Property="Source" Value="../Icon/RadioButtonYesIcon.png"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

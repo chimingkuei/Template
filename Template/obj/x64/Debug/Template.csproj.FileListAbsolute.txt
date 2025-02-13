@@ -541,3 +541,4 @@ D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\SharpDX.pdb
 D:\Chimingkuei\repos\Reference\C#\Template\Template\obj\x64\Debug\Lang\en-US.baml
 D:\Chimingkuei\repos\Reference\C#\Template\Template\obj\x64\Debug\Lang\zh-CN.baml
 D:\Chimingkuei\repos\Reference\C#\Template\Template\obj\x64\Debug\Lang\zh-TW.baml
+D:\Chimingkuei\repos\Reference\C#\Template\Template\obj\x64\Debug\UI\ToggleButtonStyles.baml

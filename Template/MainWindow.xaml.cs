@@ -31,6 +31,8 @@ using DimmerNexus;
 using System.Drawing;
 using InnovaControls;
 using DataSphereX.ComNet;
+using System.Drawing.Imaging;
+using System.Windows.Controls.Primitives;
 
 
 namespace Template
@@ -199,7 +201,7 @@ namespace Template
         }
         #endregion
 
-        #region Language Switch
+        #region Language Switch Usage
         #region Control Usage
         //<ComboBox Height = "60" Margin="5" Width="200" SelectionChanged="Language_Switch">
         //    <ComboBoxItem IsSelected = "True" >
@@ -249,11 +251,26 @@ namespace Template
         //                        break;
         //                    }
         //            }
-        //            System.Windows.Application.Current.Resources.MergedDictionaries[10] = dict;
+        //            System.Windows.Application.Current.Resources.MergedDictionaries[11] = dict;
         //        }
         //    }
         //}
         #endregion
+        #endregion
+
+        #region ToggleButton Usage
+        //private void ToggleButton_CheckedUnchecked(object sender, RoutedEventArgs e)
+        //{
+        //    var toggleButton = sender as ToggleButton;
+        //    if (toggleButton.IsChecked == true)
+        //    {
+        //        //Do something!
+        //    }
+        //    else
+        //    {
+        //        //Do something!
+        //    }
+        //}
         #endregion
         #endregion
 

@@ -191,6 +191,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="UI\ToggleButtonStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -222,10 +226,6 @@
   <ItemGroup>
     <Resource Include="Icon\Deepwise.ico" />
     <Resource Include="Icon\DeepWise.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="UI\RadioButtonNoIcon.png" />
-    <Resource Include="UI\RadioButtonYesIcon.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CamNexus\CamNexus.csproj">
@@ -260,7 +260,14 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Icon\Start.png" />
+    <Resource Include="Icon\Stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icon\RadioButtonNoIcon.png" />
+    <Resource Include="Icon\RadioButtonYesIcon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
