@@ -225,6 +225,24 @@ namespace DataSphereX
         }
         #endregion
 
+        public bool IsFileWriteComplete(string filepath, int timeout)
+        {
+            bool state = false;
+            while (true)
+            {
+                if (File.Exists(filepath))
+                {
+                    DateTime lastWriteTime = File.GetLastWriteTime(filepath);
+                    if (DateTime.Now - lastWriteTime > TimeSpan.FromSeconds(timeout))
+                    {
+                        state = true;
+                        break;
+                    }
+                }
+                Thread.Sleep(1000);
+            }
+            return state;
+        }
 
 
     }
