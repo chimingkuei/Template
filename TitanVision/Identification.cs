@@ -76,22 +76,28 @@ namespace TitanVision
             }
         }
 
-        public void OCR(string filepath, string language, out string result)
+        public void OCR<T>(T src, string language, out string result)
         {
             result = null;
-            if (File.Exists(filepath))
+            ocr = new TesseractEngine("./tessdata", language, EngineMode.Default);
+            Page page = null;
+
+            switch (src)
             {
-                ocr = new TesseractEngine("./tessdata", language);
-                Bitmap bit = new Bitmap(Image.FromFile(filepath));
-                Page page = ocr.Process(bit);
+                case Bitmap bitmap:
+                    page = ocr.Process(bitmap);
+                    break;
+
+                case string filePath when File.Exists(filePath):
+                    page = ocr.Process(Pix.LoadFromFile(filePath));
+                    break;
+            }
+            if (page != null)
+            {
                 result = page.GetText();
                 page.Dispose();
             }
-            else
-            {
-                Console.WriteLine($"{filepath}檔案不存在!");
-            }
-           
         }
+
     }
 }
