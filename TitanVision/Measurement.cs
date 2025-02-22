@@ -11,8 +11,8 @@ namespace TitanVision
     public class Measurement : SharpVision
     {
         /// <summary>
-        /// The example of a Point input parameter is new OpenCvSharp.Point(x, x).
-        /// <returns></returns>
+        /// The example of a Point parameter is new Point(x, x).
+        /// </summary>
         public double CalculateDistance(Point p1, Point p2)
         {
             int deltaX = p1.X - p2.X;

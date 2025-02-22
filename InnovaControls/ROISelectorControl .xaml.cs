@@ -25,12 +25,21 @@ namespace InnovaControls
         }
 
         private bool _started;
-        private Point _downPoint;
+        private Point _startPoint;
+        private Point _endPoint;
+
+        private void ShowRect(Point point)
+        {
+            var rect = new Rect(_startPoint, point);
+            Rectangle.Margin = new Thickness(rect.Left, rect.Top, 0, 0);
+            Rectangle.Width = rect.Width;
+            Rectangle.Height = rect.Height;
+        }
 
         private void DrawROI_MouseDown(object sender, MouseButtonEventArgs e)
         {
             _started = true;
-            _downPoint = e.GetPosition(Display_Screen);
+            _startPoint = e.GetPosition(Display_Screen);
             //Console.WriteLine($"X座標:{e.GetPosition(image).X}");
             //Console.WriteLine($"X座標:{e.GetPosition(image).Y}");
         }
@@ -46,23 +55,15 @@ namespace InnovaControls
             {
                 if (_started)
                 {
-                    #region draw rectangle
-                    var point = e.GetPosition(Display_Screen);
-                    var rect = new Rect(_downPoint, point);
-                    Rectangle.Margin = new Thickness(rect.Left, rect.Top, 0, 0);
-                    Rectangle.Width = rect.Width;
-                    Rectangle.Height = rect.Height;
-                    #endregion
+                    _endPoint = e.GetPosition(Display_Screen);
+                    ShowRect(_endPoint);
                 }
             }
-            if (e.RightButton == MouseButtonState.Pressed)
-            {
-                #region Draw Rectangle
-                var point = e.GetPosition(Display_Screen);
-                var rect = new Rect(_downPoint, point);
-                Rectangle.Margin = new Thickness(rect.Left, rect.Top, 0, 0);
-                #endregion
-            }
+        }
+
+        private Point ConvertCoord(Point _startPoint)
+        {
+            return new Point(_startPoint.X * 1920 / Display_Screen.ActualWidth, _startPoint.Y * 1080 / Display_Screen.ActualHeight);
         }
 
         #region Image Control Register

@@ -27,7 +27,7 @@ namespace TitanVision
         }
 
         /// <summary>
-        /// The example of a Scalar input parameter is new Scalar(x, x, x).
+        /// The example of a Scalar parameter is new Scalar(x, x, x).
         /// </summary>
         public Mat ExtractHSVColor(Mat src, Scalar lowercolor, Scalar uppercolor, Scalar background = default)
         {
@@ -58,7 +58,7 @@ namespace TitanVision
             return dst;
         }
 
-        public Mat BoundingBox(Mat src, double threshold)
+        public Mat GrabRect(Mat src, double threshold)
         {
             Mat binaryImg = Binarization(src, threshold);
             Cv2.FindContours(binaryImg, out Point[][] contours, out HierarchyIndex[] hierarchy, RetrievalModes.Tree, ContourApproximationModes.ApproxSimple);

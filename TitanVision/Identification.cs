@@ -54,7 +54,7 @@ namespace TitanVision
         }
 
         /// <summary>
-        /// The filepath parameter can be a one-dimensional or two-dimensional code.
+        /// Can decode 1D or 2D barcodes.
         /// </summary>
         public void ReadCode(string filepath, out string result)
         {
