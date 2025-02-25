@@ -64,9 +64,12 @@
     <Compile Include="BuildingBlock.xaml.cs">
       <DependentUpon>BuildingBlock.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Chart\LineChart.xaml.cs">
+      <DependentUpon>LineChart.xaml</DependentUpon>
+    </Compile>
     <Compile Include="IndicatorLight.xaml.cs" />
     <Compile Include="JoystickControl.cs" />
-    <Compile Include="PieChart.xaml.cs" />
+    <Compile Include="Chart\PieChart.xaml.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -101,11 +104,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Chart\LineChart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="IndicatorLight.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="PieChart.xaml">
+    <Page Include="Chart\PieChart.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -121,5 +128,6 @@
   <ItemGroup>
     <Resource Include="Background.bmp" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

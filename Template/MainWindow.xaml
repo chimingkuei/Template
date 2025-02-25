@@ -6,6 +6,7 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
         xmlns:controls="clr-namespace:InnovaControls;assembly=InnovaControls"
+        xmlns:chartcontrols="clr-namespace:InnovaControls.Chart;assembly=InnovaControls"
         xmlns:local="clr-namespace:Template"
         mc:Ignorable="d"
         Closing="WindowClosing" 
@@ -52,7 +53,7 @@
             </TabItem>
             <TabItem Header="參數畫面" Style="{StaticResource BaseTabcontrol}">
                 <Grid>
-                    
+
                 </Grid>
             </TabItem>
         </TabControl>

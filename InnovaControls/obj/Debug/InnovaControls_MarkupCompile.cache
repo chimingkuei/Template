@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 
-5-1069253144
+6-1446819200
 
-9-986037128
+10-1585002260
 181906412679
-BuildingBlock.xaml;IndicatorLight.xaml;PieChart.xaml;ROISelectorControl .xaml;SubWindow.xaml;
+BuildingBlock.xaml;Chart\LineChart.xaml;IndicatorLight.xaml;Chart\PieChart.xaml;ROISelectorControl .xaml;SubWindow.xaml;
 
 False
 
