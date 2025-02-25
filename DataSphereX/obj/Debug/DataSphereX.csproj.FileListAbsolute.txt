@@ -45,3 +45,14 @@ D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\bin\Debug\System.Threadin
 D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\bin\Debug\netDxf.dll
 D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\bin\Debug\netDxf.xml
 D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\obj\Debug\DataSphereX.csproj.ResolveComReference.cache
+D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\bin\Debug\dll\x86\OpenCvSharpExtern.dll
+D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\bin\Debug\dll\x86\opencv_videoio_ffmpeg455.dll
+D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\bin\Debug\dll\x64\OpenCvSharpExtern.dll
+D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\bin\Debug\dll\x64\opencv_videoio_ffmpeg455_64.dll
+D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\bin\Debug\OpenCvSharp.dll
+D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\bin\Debug\OpenCvSharp.Extensions.dll
+D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\bin\Debug\System.Drawing.Common.dll
+D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\bin\Debug\System.ValueTuple.dll
+D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\bin\Debug\OpenCvSharp.xml
+D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\bin\Debug\OpenCvSharp.Extensions.xml
+D:\Chimingkuei\repos\Reference\C#\Template\DataSphereX\bin\Debug\System.ValueTuple.xml

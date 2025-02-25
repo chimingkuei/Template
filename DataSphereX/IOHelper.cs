@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OpenCvSharp;
+using OpenCvSharp.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -8,6 +10,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace DataSphereX
 {
@@ -244,6 +247,50 @@ namespace DataSphereX
             return state;
         }
 
+        private BitmapImage ConvertBitmapToBitmapImage(Bitmap bitmap)
+        {
+            using (MemoryStream memory = new MemoryStream())
+            {
+                bitmap.Save(memory, System.Drawing.Imaging.ImageFormat.Png);
+                memory.Position = 0;
+                BitmapImage bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                bitmapImage.StreamSource = memory;
+                bitmapImage.EndInit();
+                bitmapImage.Freeze();
+                return bitmapImage;
+            }
+        }
+
+        public T CaptureRegion<T>(int x, int y, int width, int height, bool show_cursor = false) where T : class
+        {
+            using (Bitmap bitmap = new Bitmap(width, height))
+            {
+                using (Graphics g = Graphics.FromImage(bitmap))
+                {
+                    g.CopyFromScreen(x, y, 0, 0, new System.Drawing.Size(width, height));
+                    if (show_cursor)
+                    {
+                        System.Drawing.Point cursorPosition = System.Windows.Forms.Cursor.Position;
+                        System.Windows.Forms.Cursor cursor = System.Windows.Forms.Cursors.Default;
+                        System.Drawing.Rectangle cursorBounds = new System.Drawing.Rectangle(cursorPosition, cursor.Size);
+                        cursor.Draw(g, cursorBounds);
+                    }
+                }
+                switch (typeof(T))
+                {
+                    case Type t when t == typeof(BitmapImage):
+                        return ConvertBitmapToBitmapImage(bitmap) as T;
+                    case Type t when t == typeof(Mat):
+                        return BitmapConverter.ToMat(bitmap) as T;
+                    case Type t when t == typeof(Bitmap):
+                        return bitmap as T;
+                    default:
+                        throw new NotSupportedException($"Type {typeof(T)} is not supported.");
+                }
+            }
+        }
 
     }
 }
