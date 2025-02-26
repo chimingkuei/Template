@@ -33,3 +33,5 @@ D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\Chart\PieCha
 D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\Chart\PieChart.baml
 D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\Chart\LineChart.g.cs
 D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\Chart\LineChart.baml
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\Chart\HistogramChart.g.cs
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\Chart\HistogramChart.baml

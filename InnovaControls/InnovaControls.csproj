@@ -64,6 +64,9 @@
     <Compile Include="BuildingBlock.xaml.cs">
       <DependentUpon>BuildingBlock.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Chart\HistogramChart.xaml.cs">
+      <DependentUpon>HistogramChart.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Chart\LineChart.xaml.cs">
       <DependentUpon>LineChart.xaml</DependentUpon>
     </Compile>
@@ -101,6 +104,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="BuildingBlock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Chart\HistogramChart.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
