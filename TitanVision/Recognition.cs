@@ -58,6 +58,14 @@ namespace TitanVision
             return dst;
         }
 
+        public double CalculateGrayAverage(Mat src)
+        {
+            Mat grayImage = new Mat();
+            Cv2.CvtColor(src, grayImage, ColorConversionCodes.BGR2GRAY);
+            Scalar meanValue = Cv2.Mean(grayImage);
+            return meanValue.Val0;
+        }
+
         public Mat GrabRect(Mat src, double threshold)
         {
             Mat binaryImg = Binarization(src, threshold);

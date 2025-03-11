@@ -299,8 +299,15 @@ namespace Template
                     }
             }
         }
+
+        #region Shortcut Key
+        private void CommandBinding_ShortcutKey(object sender, ExecutedRoutedEventArgs e)
+        {
+
+        }
+        #endregion
         #endregion
 
-       
+
     }
 }
