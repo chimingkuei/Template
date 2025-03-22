@@ -9,6 +9,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using ZXing;
 using Point = OpenCvSharp.Point;
 using Size = OpenCvSharp.Size;
 
@@ -17,24 +18,26 @@ namespace TitanVision
 
     public class Recognition : SharpVision
     {
-        public Mat Binarization(Mat src, double threshold)
+        public Mat Binarization(Mat src, double threshold, bool saveImg = true)
         {
             Mat grayImg = new Mat();
             Cv2.CvtColor(src, grayImg, ColorConversionCodes.BGR2GRAY);
             Mat dst = new Mat();
             Cv2.Threshold(grayImg, dst, threshold, 255, ThresholdTypes.Binary);
+            if (saveImg)
+                Cv2.ImWrite(Path.Combine(outputFolder, Path.GetFileName(fileName) + "_Binarization" + fileExtension), dst);
             return dst;
         }
 
         /// <summary>
         /// The example of a Scalar parameter is new Scalar(x, x, x).
         /// </summary>
-        public Mat ExtractHSVColor(Mat src, Scalar lowercolor, Scalar uppercolor, Scalar background = default)
+        public Mat ExtractHSVColor(Mat src, Scalar lowerColor, Scalar upperColor, Scalar background = default, bool saveImg = true)
         {
             Mat hsv = new Mat();
             Cv2.CvtColor(src, hsv, ColorConversionCodes.BGR2HSV);
             Mat mask = new Mat();
-            Cv2.InRange(hsv, lowercolor, uppercolor, mask);
+            Cv2.InRange(hsv, lowerColor, upperColor, mask);
             Mat result = new Mat();
             if (background != default)
             {
@@ -46,15 +49,19 @@ namespace TitanVision
             {
                 Cv2.BitwiseAnd(src, src, result, mask);
             }
+            if (saveImg)
+                Cv2.ImWrite(Path.Combine(outputFolder, Path.GetFileName(fileName) + "_ExtractHSVColor" + fileExtension), result);
             return result;
         }
 
-        public Mat EqualizeHist(Mat src)
+        public Mat EqualizeHist(Mat src, bool saveImg = true)
         {
             Mat grayImage = new Mat();
             Cv2.CvtColor(src, grayImage, ColorConversionCodes.BGR2GRAY);
             Mat dst = new Mat();
             Cv2.EqualizeHist(grayImage, dst);
+            if (saveImg)
+                Cv2.ImWrite(Path.Combine(outputFolder, Path.GetFileName(fileName) + "_EqualizeHist" + fileExtension), dst);
             return dst;
         }
 
@@ -66,7 +73,7 @@ namespace TitanVision
             return meanValue.Val0;
         }
 
-        public Mat GrabRect(Mat src, double threshold)
+        public Mat GrabRect(Mat src, double threshold, bool saveImg = true)
         {
             Mat binaryImg = Binarization(src, threshold);
             Cv2.FindContours(binaryImg, out Point[][] contours, out HierarchyIndex[] hierarchy, RetrievalModes.Tree, ContourApproximationModes.ApproxSimple);
@@ -76,6 +83,8 @@ namespace TitanVision
                 Rect boundingRect = Cv2.BoundingRect(contour);
                 Cv2.Rectangle(dst, boundingRect, Scalar.Red, 2);
             }
+            if (saveImg)
+                Cv2.ImWrite(Path.Combine(outputFolder, Path.GetFileName(fileName) + "_GrabRect" + fileExtension), dst);
             return dst;
         }
 

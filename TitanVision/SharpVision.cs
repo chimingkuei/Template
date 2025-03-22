@@ -51,19 +51,23 @@ namespace TitanVision
 
     interface IFileManager
     {
-        void BatchImageTransform(string inputfolderpath, string file_extension, string outputfolderpath, string outputformat, double threshold, Func<Mat, double, Mat> fun);
+        void BatchTransform(string inputFolder, double threshold, Func<Mat, double, Mat> fun);
     }
 
     public abstract class SharpVision : IFileManager
     {
-        public void BatchImageTransform(string inputfolderpath, string file_extension, string outputfolderpath, string outputfilename, double threshold, Func<Mat, double, Mat> fun)
+        public string outputFolder;
+        public string fileName;
+        public string fileExtension;
+
+        public void BatchTransform(string inputFolder, double threshold, Func<Mat, double, Mat> fun)
         {
-            string[] imageFiles = Directory.GetFiles(inputfolderpath, file_extension);
+            string[] imageFiles = Directory.GetFiles(inputFolder, fileExtension);
             foreach (string imageFile in imageFiles)
             {
                 Mat image = Cv2.ImRead(imageFile, ImreadModes.Color);
                 Mat dst = fun(image, threshold);
-                Cv2.ImWrite(Path.Combine(outputfolderpath, outputfilename + file_extension), dst);
+                Cv2.ImWrite(Path.Combine(outputFolder, fileName + fileExtension), dst);
             }
         }
     }
