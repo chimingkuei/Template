@@ -104,7 +104,7 @@ namespace TitanVision
         {
             Mat binaryInv = ConvertBinaryInv(src, threshold);
             if (saveImg)
-                Cv2.ImWrite(Path.Combine(outputFolder, Path.GetFileName(fileName) + "_binaryInv" + fileExtension), binaryInv);
+                Cv2.ImWrite(Path.Combine(outputFolder, Path.GetFileNameWithoutExtension(fileName) + "_binaryInv" + fileExtension), binaryInv);
             List<Point> fitLinePoints = new List<Point>();
             Point p1 = line.Item1;
             Point p2 = line.Item2;
@@ -148,7 +148,7 @@ namespace TitanVision
             if (saveImg)
             {
                 Cv2.Line(src, startPoint, endPoint, Scalar.Blue, 2);
-                Cv2.ImWrite(Path.Combine(outputFolder, Path.GetFileName(fileName) + fileExtension), src);
+                Cv2.ImWrite(Path.Combine(outputFolder, Path.GetFileNameWithoutExtension(fileName) + "_Result" + fileExtension), src);
             }
         }
         #endregion
@@ -233,7 +233,7 @@ namespace TitanVision
         {
             Mat binaryInv = ConvertBinaryInv(src, threshold);
             if (saveImg)
-                Cv2.ImWrite(Path.Combine(outputFolder, Path.GetFileName(fileName) + "_binaryInv" + fileExtension), binaryInv);
+                Cv2.ImWrite(Path.Combine(outputFolder, Path.GetFileNameWithoutExtension(fileName) + "_binaryInv" + fileExtension), binaryInv);
             List<PointF> fitCirclePoints = new List<PointF>();
             List<PointF> filterCirclePoints = new List<PointF>();
             for (int angle = 1; angle <= 360; angle++)
@@ -273,7 +273,7 @@ namespace TitanVision
                     int imgCenterY = src.Height - (int)CenterY;
                     Cv2.Circle(src, new Point((int)CenterX, imgCenterY), 5, Scalar.Green, -1);
                     Cv2.Circle(src, new Point((int)CenterX, imgCenterY), (int)CenterR, Scalar.Red, 1);
-                    Cv2.ImWrite(Path.Combine(outputFolder, Path.GetFileName(fileName) + fileExtension), src);
+                    Cv2.ImWrite(Path.Combine(outputFolder, Path.GetFileNameWithoutExtension(fileName) + "_Result" + fileExtension), src);
                 }
                 return true;
             }

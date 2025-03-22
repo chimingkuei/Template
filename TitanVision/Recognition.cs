@@ -25,7 +25,7 @@ namespace TitanVision
             Mat dst = new Mat();
             Cv2.Threshold(grayImg, dst, threshold, 255, ThresholdTypes.Binary);
             if (saveImg)
-                Cv2.ImWrite(Path.Combine(outputFolder, Path.GetFileName(fileName) + "_Binarization" + fileExtension), dst);
+                Cv2.ImWrite(Path.Combine(outputFolder, Path.GetFileNameWithoutExtension(fileName) + "_Binarization" + fileExtension), dst);
             return dst;
         }
 
@@ -50,7 +50,7 @@ namespace TitanVision
                 Cv2.BitwiseAnd(src, src, result, mask);
             }
             if (saveImg)
-                Cv2.ImWrite(Path.Combine(outputFolder, Path.GetFileName(fileName) + "_ExtractHSVColor" + fileExtension), result);
+                Cv2.ImWrite(Path.Combine(outputFolder, Path.GetFileNameWithoutExtension(fileName) + "_ExtractHSVColor" + fileExtension), result);
             return result;
         }
 
@@ -61,7 +61,7 @@ namespace TitanVision
             Mat dst = new Mat();
             Cv2.EqualizeHist(grayImage, dst);
             if (saveImg)
-                Cv2.ImWrite(Path.Combine(outputFolder, Path.GetFileName(fileName) + "_EqualizeHist" + fileExtension), dst);
+                Cv2.ImWrite(Path.Combine(outputFolder, Path.GetFileNameWithoutExtension(fileName) + "_EqualizeHist" + fileExtension), dst);
             return dst;
         }
 
@@ -84,7 +84,7 @@ namespace TitanVision
                 Cv2.Rectangle(dst, boundingRect, Scalar.Red, 2);
             }
             if (saveImg)
-                Cv2.ImWrite(Path.Combine(outputFolder, Path.GetFileName(fileName) + "_GrabRect" + fileExtension), dst);
+                Cv2.ImWrite(Path.Combine(outputFolder, Path.GetFileNameWithoutExtension(fileName) + "_GrabRect" + fileExtension), dst);
             return dst;
         }
 
