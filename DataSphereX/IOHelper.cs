@@ -2,6 +2,7 @@
 using OpenCvSharp.Extensions;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -291,6 +292,94 @@ namespace DataSphereX
                 }
             }
         }
+
+
+        // 導入調用下一個鉤子的 API
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        public static extern IntPtr CallNextHookEx(IntPtr hhk, int nCode, IntPtr wParam, IntPtr lParam);
+        // 導入卸載鉤子的 API
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        public static extern bool UnhookWindowsHookEx(IntPtr hHook);
+        #region Lock Keyboard
+        // 鉤子的常量
+        private const int WH_KEYBOARD_LL = 13;  // 鍵盤鉤子的類型
+        private const int WM_KEYDOWN = 0x0100;   // 鍵盤按鍵按下消息
+
+        // 將委託的訪問修飾符改為 public
+        public delegate IntPtr LowLevelKeyboardProc(int nCode, IntPtr wParam, IntPtr lParam);
+
+        // 定義鉤子
+        private static LowLevelKeyboardProc _keyboardProc = KeyboardHookCallback;
+        private static IntPtr _keyboardHookID = IntPtr.Zero;
+
+        // 導入設置鉤子的 API
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        public static extern IntPtr SetWindowsHookEx(int idHook, LowLevelKeyboardProc lpfn, IntPtr hMod, uint dwThreadId);
+
+        // 導入獲取當前線程 ID 的 API
+        [DllImport("kernel32.dll")]
+        public static extern uint GetCurrentThreadId();
+
+        // 鉤子回調函式
+        private static IntPtr KeyboardHookCallback(int nCode, IntPtr wParam, IntPtr lParam)
+        {
+            // 如果是按下鍵盤按鍵，則阻止輸入
+            if (nCode >= 0 && wParam == (IntPtr)WM_KEYDOWN)
+            {
+                return (IntPtr)1;  // 返回 1 表示已處理該消息，阻止按鍵輸入
+            }
+
+            return CallNextHookEx(_keyboardHookID, nCode, wParam, lParam);
+        }
+
+        // 鎖定鍵盤的函式
+        public static void LockKeyboard()
+        {
+            _keyboardHookID = SetWindowsHookEx(WH_KEYBOARD_LL, _keyboardProc, IntPtr.Zero, 0);
+        }
+
+        // 解鎖鍵盤的函式
+        public static void UnlockKeyboard()
+        {
+            UnhookWindowsHookEx(_keyboardHookID);
+        }
+        #endregion
+
+        #region Lock Mouse
+        private const int WH_MOUSE_LL = 14; // 低階滑鼠鉤子
+        private static IntPtr _mouseHookID = IntPtr.Zero;
+        private static HookProc _mouseProc = MouseHookCallback;
+
+        // 定义委托
+        private delegate IntPtr HookProc(int nCode, IntPtr wParam, IntPtr lParam);
+
+        // 引入 API
+        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        private static extern IntPtr SetWindowsHookEx(int idHook, HookProc lpfn, IntPtr hMod, uint dwThreadId);
+
+        [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        private static extern IntPtr GetModuleHandle(string lpModuleName);
+
+        private static IntPtr SetHook(HookProc proc)
+        {
+            using (Process curProcess = Process.GetCurrentProcess())
+            using (ProcessModule curModule = curProcess.MainModule)
+            {
+                return SetWindowsHookEx(WH_MOUSE_LL, proc, GetModuleHandle(curModule.ModuleName), 0);
+            }
+        }
+
+        // 钩子回调函数
+        private static IntPtr MouseHookCallback(int nCode, IntPtr wParam, IntPtr lParam)
+        {
+            if (nCode >= 0)
+            {
+                // 阻止所有滑鼠事件
+                return (IntPtr)1;
+            }
+            return CallNextHookEx(_mouseHookID, nCode, wParam, lParam);
+        }
+        #endregion
 
     }
 }
