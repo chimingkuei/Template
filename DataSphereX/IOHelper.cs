@@ -379,6 +379,19 @@ namespace DataSphereX
             }
             return CallNextHookEx(_mouseHookID, nCode, wParam, lParam);
         }
+
+        // 鎖定滑鼠的函式
+        public static void LockMouse()
+        {
+            _mouseHookID = SetHook(_mouseProc);
+        }
+
+        // 解鎖滑鼠的函式
+        public static void UnlockMouse()
+        {
+            UnhookWindowsHookEx(_mouseHookID);
+            _mouseHookID = IntPtr.Zero;
+        }
         #endregion
 
     }
