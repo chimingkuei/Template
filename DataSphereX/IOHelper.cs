@@ -293,17 +293,19 @@ namespace DataSphereX
             }
         }
 
-
         // 導入調用下一個鉤子的 API
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         public static extern IntPtr CallNextHookEx(IntPtr hhk, int nCode, IntPtr wParam, IntPtr lParam);
         // 導入卸載鉤子的 API
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         public static extern bool UnhookWindowsHookEx(IntPtr hHook);
+        [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        private static extern IntPtr GetModuleHandle(string lpModuleName);
         #region Lock Keyboard
         // 鉤子的常量
         private const int WH_KEYBOARD_LL = 13;  // 鍵盤鉤子的類型
         private const int WM_KEYDOWN = 0x0100;   // 鍵盤按鍵按下消息
+        private const int VK_C = 0x43;
 
         // 將委託的訪問修飾符改為 public
         public delegate IntPtr LowLevelKeyboardProc(int nCode, IntPtr wParam, IntPtr lParam);
@@ -320,28 +322,53 @@ namespace DataSphereX
         [DllImport("kernel32.dll")]
         public static extern uint GetCurrentThreadId();
 
+        // 結構體，存儲鍵盤信息
+        [StructLayout(LayoutKind.Sequential)]
+        private struct KBDLLHOOKSTRUCT
+        {
+            public int vkCode;  // 虛擬鍵碼
+            public int scanCode;
+            public int flags;
+            public int time;
+            public IntPtr dwExtraInfo;
+        }
+
         // 鉤子回調函式
         private static IntPtr KeyboardHookCallback(int nCode, IntPtr wParam, IntPtr lParam)
         {
-            // 如果是按下鍵盤按鍵，則阻止輸入
             if (nCode >= 0 && wParam == (IntPtr)WM_KEYDOWN)
             {
-                return (IntPtr)1;  // 返回 1 表示已處理該消息，阻止按鍵輸入
+                // 使用非泛型的 Marshal.PtrToStructure
+                KBDLLHOOKSTRUCT kbStruct = (KBDLLHOOKSTRUCT)Marshal.PtrToStructure(lParam, typeof(KBDLLHOOKSTRUCT));
+                // 如果按下的是 C 鍵 (VK_C)，則允許輸入
+                if (kbStruct.vkCode == VK_C)
+                {
+                    return CallNextHookEx(_keyboardHookID, nCode, wParam, lParam);
+                }
+                // 阻止其他按鍵
+                return (IntPtr)1;
             }
-
             return CallNextHookEx(_keyboardHookID, nCode, wParam, lParam);
         }
 
         // 鎖定鍵盤的函式
-        public static void LockKeyboard()
+        public void LockKeyboard()
         {
-            _keyboardHookID = SetWindowsHookEx(WH_KEYBOARD_LL, _keyboardProc, IntPtr.Zero, 0);
+            if (_keyboardHookID == IntPtr.Zero)
+            {
+                IntPtr moduleHandle = GetModuleHandle(null); // 直接獲取當前模組句柄
+                _keyboardHookID = SetWindowsHookEx(WH_KEYBOARD_LL, _keyboardProc, moduleHandle, 0);
+            }
         }
 
         // 解鎖鍵盤的函式
-        public static void UnlockKeyboard()
+        public void UnlockKeyboard()
         {
-            UnhookWindowsHookEx(_keyboardHookID);
+            if (_keyboardHookID != IntPtr.Zero)
+            {
+                UnhookWindowsHookEx(_keyboardHookID);
+                _keyboardHookID = IntPtr.Zero;  // 重置變數，確保可以重新鎖定
+            }
         }
         #endregion
 
@@ -357,8 +384,6 @@ namespace DataSphereX
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         private static extern IntPtr SetWindowsHookEx(int idHook, HookProc lpfn, IntPtr hMod, uint dwThreadId);
 
-        [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-        private static extern IntPtr GetModuleHandle(string lpModuleName);
 
         private static IntPtr SetHook(HookProc proc)
         {
@@ -380,14 +405,12 @@ namespace DataSphereX
             return CallNextHookEx(_mouseHookID, nCode, wParam, lParam);
         }
 
-        // 鎖定滑鼠的函式
-        public static void LockMouse()
+        public void LockMouse()
         {
             _mouseHookID = SetHook(_mouseProc);
         }
 
-        // 解鎖滑鼠的函式
-        public static void UnlockMouse()
+        public void UnLockMouse()
         {
             UnhookWindowsHookEx(_mouseHookID);
             _mouseHookID = IntPtr.Zero;
