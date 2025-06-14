@@ -1,0 +1,37 @@
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\bin\Debug\ControlsNexus.dll
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\bin\Debug\ControlsNexus.pdb
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\bin\Debug\LiveCharts.dll
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\bin\Debug\LiveCharts.Wpf.dll
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\bin\Debug\SharpDX.DirectInput.dll
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\bin\Debug\SharpDX.dll
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\bin\Debug\LiveCharts.pdb
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\bin\Debug\LiveCharts.xml
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\bin\Debug\LiveCharts.Wpf.pdb
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\bin\Debug\LiveCharts.Wpf.xml
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\bin\Debug\SharpDX.pdb
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\bin\Debug\SharpDX.DirectInput.pdb
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\bin\Debug\SharpDX.DirectInput.xml
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\obj\Debug\ControlsNexus.csproj.AssemblyReference.cache
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\obj\Debug\BuildingBlock.g.cs
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\obj\Debug\Chart\HistogramChart.g.cs
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\obj\Debug\Chart\LineChart.g.cs
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\obj\Debug\IndicatorLight.g.cs
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\obj\Debug\Chart\PieChart.g.cs
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\obj\Debug\ROISelectorControl .g.cs
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\obj\Debug\SubWindow.g.cs
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\obj\Debug\ControlsNexus_MarkupCompile.cache
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\obj\Debug\ControlsNexus_MarkupCompile.lref
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\obj\Debug\BuildingBlock.baml
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\obj\Debug\Chart\HistogramChart.baml
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\obj\Debug\Chart\LineChart.baml
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\obj\Debug\IndicatorLight.baml
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\obj\Debug\Chart\PieChart.baml
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\obj\Debug\ROISelectorControl .baml
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\obj\Debug\SubWindow.baml
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\obj\Debug\ControlsNexus.g.resources
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\obj\Debug\ControlsNexus.Properties.Resources.resources
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\obj\Debug\ControlsNexus.csproj.GenerateResource.cache
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\obj\Debug\ControlsNexus.csproj.CoreCompileInputs.cache
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\obj\Debug\Controls.3C4199FC.Up2Date
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\obj\Debug\ControlsNexus.dll
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\obj\Debug\ControlsNexus.pdb

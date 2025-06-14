@@ -1,0 +1,6 @@
+D:\Chimingkuei\repos\Reference\C#\Template\DimmerNexus\bin\Debug\DimmerNexus.dll
+D:\Chimingkuei\repos\Reference\C#\Template\DimmerNexus\bin\Debug\DimmerNexus.pdb
+D:\Chimingkuei\repos\Reference\C#\Template\DimmerNexus\obj\Debug\DimmerNexus.csproj.AssemblyReference.cache
+D:\Chimingkuei\repos\Reference\C#\Template\DimmerNexus\obj\Debug\DimmerNexus.csproj.CoreCompileInputs.cache
+D:\Chimingkuei\repos\Reference\C#\Template\DimmerNexus\obj\Debug\DimmerNexus.dll
+D:\Chimingkuei\repos\Reference\C#\Template\DimmerNexus\obj\Debug\DimmerNexus.pdb

@@ -1,0 +1,37 @@
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\bin\Debug\InnovaControls.dll
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\bin\Debug\InnovaControls.pdb
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\InnovaControls.csproj.AssemblyReference.cache
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\IndicatorLight.g.cs
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\InnovaControls_MarkupCompile.cache
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\InnovaControls_MarkupCompile.lref
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\IndicatorLight.baml
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\InnovaControls.g.resources
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\InnovaControls.Properties.Resources.resources
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\InnovaControls.csproj.GenerateResource.cache
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\InnovaControls.csproj.CoreCompileInputs.cache
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\InnovaControls.dll
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\InnovaControls.pdb
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\bin\Debug\LiveCharts.dll
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\bin\Debug\LiveCharts.Wpf.dll
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\bin\Debug\LiveCharts.pdb
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\bin\Debug\LiveCharts.xml
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\bin\Debug\LiveCharts.Wpf.pdb
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\bin\Debug\LiveCharts.Wpf.xml
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\InnovaCo.015B6597.Up2Date
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\ROISelectorControl .g.cs
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\ROISelectorControl .baml
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\SubWindow.g.cs
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\SubWindow.baml
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\BuildingBlock.g.cs
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\BuildingBlock.baml
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\bin\Debug\SharpDX.DirectInput.dll
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\bin\Debug\SharpDX.dll
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\bin\Debug\SharpDX.pdb
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\bin\Debug\SharpDX.DirectInput.pdb
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\bin\Debug\SharpDX.DirectInput.xml
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\Chart\PieChart.g.cs
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\Chart\PieChart.baml
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\Chart\LineChart.g.cs
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\Chart\LineChart.baml
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\Chart\HistogramChart.g.cs
+D:\Chimingkuei\repos\Reference\C#\Template\InnovaControls\obj\Debug\Chart\HistogramChart.baml
