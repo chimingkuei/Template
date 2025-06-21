@@ -280,10 +280,7 @@ namespace Template
             LoadConfig(0, 0);
         }
         BaseConfig<RootObject> Config = new BaseConfig<RootObject>();
-        #region Log
         BaseLogRecord Logger = new BaseLogRecord();
-        //Logger.WriteLog("儲存參數!", LogLevel.General, richTextBoxGeneral);
-        #endregion
         Webcam Cam = new Webcam();
         #endregion
 
