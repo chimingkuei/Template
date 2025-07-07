@@ -12,11 +12,28 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 
 namespace DataNexus
 {
     public class IOHelper
     {
+        #region Open many threads
+        //int maxTasks = 10; // 設定最大任務數量
+        //Task[] tasks = new Task[maxTasks];
+        //for (int i = 0; i<maxTasks; i++)
+        //{
+        //    int taskId = i;
+        //        tasks[i] = Task.Run(() =>
+        //    {
+        //        Thread.Sleep(3000);
+        //        Console.WriteLine($"Task {taskId} is running on thread {Task.CurrentId}");
+        //    });
+        //}
+        //// 等待所有任務完成
+        //Task.WhenAll(tasks).Wait();
+        #endregion
+
         public void GetAllSubdirectories(DirectoryInfo dir, List<DirectoryInfo> subdir, bool system = false, bool hidden = false)
         {
             DirectoryInfo[] sub = dir.GetDirectories();
