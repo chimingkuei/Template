@@ -117,7 +117,8 @@ namespace DataNexus
         }
         #endregion
 
-        #region Find windows
+        #region For function ActivateWindow
+        #region Find window
         [DllImport("user32.dll")]
         static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
         public IntPtr FindWindowWrapper(string lpClassName, string lpWindowName)
@@ -126,7 +127,7 @@ namespace DataNexus
         }
         #endregion
 
-        #region Set foreground windows
+        #region Set foreground window
         [DllImport("user32.dll")]
         static extern bool SetForegroundWindow(IntPtr hWnd);
         public bool SetForegroundWindowWrapper(IntPtr hWnd)
@@ -135,7 +136,7 @@ namespace DataNexus
         }
         #endregion
 
-        #region Show windows
+        #region Show window
         [DllImport("user32.dll")]
         static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
         const int SW_HIDE = 0;
@@ -149,6 +150,7 @@ namespace DataNexus
         {
             return ShowWindow(hWnd, SW_RESTORE);
         }
+        #endregion
         #endregion
 
         /// <summary>
