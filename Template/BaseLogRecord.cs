@@ -10,9 +10,6 @@ using System.Windows.Media;
 
 namespace Template
 {
-    /// <summary>
-    /// Logger.WriteLog("儲存參數!", LogLevel.General, richTextBoxGeneral);
-    /// </summary>
     public class BaseLogRecord
     {
         public enum LogLevel { General, Warning, Debug, Error };
@@ -38,6 +35,9 @@ namespace Template
             rtb.UpdateLayout();
         }
 
+        /// <summary>
+        /// Logger.WriteLog("儲存參數!", LogLevel.General, richTextBoxGeneral);
+        /// </summary>
         public void WriteLog(string logmessage, LogLevel loglevel, RichTextBox rtb)
         {
             string dirname = null;
