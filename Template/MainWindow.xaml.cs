@@ -33,6 +33,7 @@ using ControlsNexus;
 using DataNexus.ComNet;
 using System.Drawing.Imaging;
 using System.Windows.Controls.Primitives;
+using System.Text.RegularExpressions;
 
 
 namespace Template
@@ -141,6 +142,25 @@ namespace Template
                 control.Text = content;
             });
         }
+
+        #region IntegerUpDown Invoke
+        //public int? DispatcherIntegerUpDownGetValue(Xceed.Wpf.Toolkit.IntegerUpDown control)
+        //{
+        //    int? content = null;
+        //    this.Dispatcher.Invoke(() =>
+        //    {
+        //        if (int.TryParse(control.Text, out int result))
+        //        {
+        //            content = result;
+        //        }
+        //        else
+        //        {
+        //            content = null;
+        //        }
+        //    });
+        //    return content;
+        //}
+        #endregion
         #endregion
 
         #region NotifyIcon
@@ -201,7 +221,7 @@ namespace Template
         }
         #endregion
 
-        #region Language Switch Usage
+        #region Language Switch
         #region Control Usage
         //<ComboBox Height = "60" Margin="5" Width="200" SelectionChanged="Language_Switch">
         //    <ComboBoxItem IsSelected = "True" >
@@ -258,7 +278,7 @@ namespace Template
         #endregion
         #endregion
 
-        #region ToggleButton Usage
+        #region ToggleButton
         //private void ToggleButton_CheckedUnchecked(object sender, RoutedEventArgs e)
         //{
         //    var toggleButton = sender as ToggleButton;
@@ -272,6 +292,35 @@ namespace Template
         //    }
         //}
         #endregion
+
+        private void OpenFolder(string description, System.Windows.Controls.TextBox textbox)
+        {
+            System.Windows.Forms.FolderBrowserDialog path = new System.Windows.Forms.FolderBrowserDialog();
+            path.Description = description;
+            path.ShowDialog();
+            textbox.Text = path.SelectedPath;
+        }
+
+        private void WriteVersionToFile()
+        {
+            string baseDir = AppDomain.CurrentDomain.BaseDirectory;  // 執行檔目錄
+            string assemblyInfoPath = System.IO.Path.GetFullPath(System.IO.Path.Combine(baseDir, @"..\..\..\Properties\AssemblyInfo.cs"));
+            if (File.Exists(assemblyInfoPath))
+            {
+                // 讀取檔案內容
+                string content = File.ReadAllText(assemblyInfoPath);
+                // 使用正則表示式擷取 AssemblyFileVersion
+                Regex regex = new Regex(@"\[assembly:\s*AssemblyFileVersion\s*\(\s*""(?<version>[\d\.]+)""\s*\)\s*\]");
+                Match match = regex.Match(content);
+                if (match.Success)
+                {
+                    string version = match.Groups["version"].Value;
+                    // 將版本寫入 TXT 檔案
+                    string outputPath = "AssemblyVersion.txt";
+                    File.WriteAllText(outputPath, version);
+                }
+            }
+        }
         #endregion
 
         #region Parameter and Init
