@@ -18,7 +18,47 @@ namespace DataNexus
 {
     public class IOHelper
     {
-        #region Open many threads
+        #region Task use
+        #region 停止
+        //var cts = new CancellationTokenSource();
+        //Task task = Task.Run(() =>
+        //{
+        //    for (int i = 0; i < 10; i++)
+        //    {
+        //        if (cts.Token.IsCancellationRequested)
+        //        {
+        //            Console.WriteLine("取消請求收到，任務停止。");
+        //            return; // 直接結束 Task
+        //        }
+
+        //        Console.WriteLine($"執行中... {i + 1}/10");
+        //        Thread.Sleep(1000);
+        //    }
+        //    Console.WriteLine("任務完成");
+        //}, cts.Token);
+
+        // 按鈕加入下行，發出取消命令
+        //cts.Cancel();
+
+        //做完前面動作，再執行其它動作加入下列
+        //try
+        //{
+        //    task.Wait();
+        //}
+        //catch (AggregateException ex)
+        //{
+        //    foreach (var inner in ex.InnerExceptions)
+        //    {
+        //        if (inner is OperationCanceledException)
+        //            Console.WriteLine("任務被取消");
+        //        else
+        //            Console.WriteLine($"發生錯誤: {inner.Message}");
+        //    }
+        //}
+        // Do something!
+        #endregion
+
+        #region 開多個Task
         //int maxTasks = 10; // 設定最大任務數量
         //Task[] tasks = new Task[maxTasks];
         //for (int i = 0; i<maxTasks; i++)
@@ -32,6 +72,48 @@ namespace DataNexus
         //}
         //// 等待所有任務完成
         //Task.WhenAll(tasks).Wait();
+        #endregion
+        #endregion
+
+        #region Parallel.ForEach use
+        #region 限制最大執行緒數量
+        //List<int> numbers = Enumerable.Range(1, 10).ToList();
+        //ParallelOptions options = new ParallelOptions
+        //{
+        //    MaxDegreeOfParallelism = 4 // 限制最多同時 4 個執行緒
+        //};
+        //Parallel.ForEach(numbers, options, number =>
+        //{
+        //    Console.WriteLine($"處理 {number} online");
+        //});
+        #endregion
+
+        #region 停止
+        //List<int> numbers = Enumerable.Range(1, 10).ToList();
+        //var cts = new CancellationTokenSource();
+        //var options = new ParallelOptions
+        //{
+        //    CancellationToken = cts.Token,
+        //    MaxDegreeOfParallelism = 4 // 限制最多 4 個執行緒
+        //};
+        //try
+        //{
+        //    Parallel.ForEach(numbers, options, number =>
+        //    {
+        //        options.CancellationToken.ThrowIfCancellationRequested();
+
+        //        Console.WriteLine($"處理 {number}, 執行緒 {Thread.CurrentThread.ManagedThreadId}");
+        //        Thread.Sleep(500); // 模擬耗時處理
+        //    });
+        //}
+        //catch (OperationCanceledException)
+        //{
+        //    Console.WriteLine("作業已取消");
+        //}
+
+        // 按鈕加入下行，發出取消命令
+        //cts.Cancel();
+        #endregion
         #endregion
 
         public void GetAllSubdirectories(DirectoryInfo dir, List<DirectoryInfo> subdir, bool system = false, bool hidden = false)
