@@ -92,9 +92,9 @@ namespace Template
             return serialnumber_;
         }
 
-        private void LoadConfig(int model, int serialnumber, bool encryption = false)
+        private void LoadConfig(int model, int serialnumber, bool isEncryption = false)
         {
-            List<RootObject> Parameter_info = Config.Load(encryption);
+            List<RootObject> Parameter_info = Config.Load(isEncryption);
             if (Parameter_info != null)
             {
                 Parameter1.Text = Parameter_info[model].Models[serialnumber].SerialNumbers.Parameter1_val;
@@ -114,14 +114,12 @@ namespace Template
                     new RootObject { Models = models },
                     new RootObject { Models = models }
                 };
-                Config.SaveInit(rootObjects, encryption);
+                Config.SaveInit(rootObjects, isEncryption);
             }
         }
        
-        private void SaveConfig(int model, int serialnumber, bool encryption = false)
-        {
-            Config.Save(model, serialnumber, SerialNumberClass(), encryption);
-        }
+        private void SaveConfig(int model, int serialnumber, bool isBackup = true, bool isEncryption = false)
+            => Config.Save(model, serialnumber, SerialNumberClass(), isBackup, isEncryption);
         #endregion
 
         #region Dispatcher Invoke 
