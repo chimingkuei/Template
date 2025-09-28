@@ -9,6 +9,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 using ZXing;
 using Point = OpenCvSharp.Point;
 using Size = OpenCvSharp.Size;
@@ -134,7 +135,67 @@ namespace VisionNexus
             }
         }
 
-        
+        /// <summary>
+        /// 讀取大圖並 Resize 後存檔
+        /// </summary>
+        /// <param name="filePath">來源圖片路徑</param>
+        /// <param name="savePath">輸出圖片路徑</param>
+        /// <param name="targetWidth">目標寬度</param>
+        /// <param name="targetHeight">目標高度</param>
+        public void ReadLargeImageAndResize(string filePath, string savePath, int targetWidth, int targetHeight)
+        {
+            using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+            {
+                // 1. 建立 Decoder (不使用 DelayCreation)
+                BitmapDecoder decoder = BitmapDecoder.Create(
+                    fs,
+                    BitmapCreateOptions.DelayCreation,
+                    BitmapCacheOption.OnLoad);
+
+                // 2. 取第一張 Frame
+                BitmapFrame frame = decoder.Frames[0];
+                int width = frame.PixelWidth;
+                int height = frame.PixelHeight;
+                int channels = frame.Format.BitsPerPixel / 8;
+
+                // 3. 複製像素資料
+                byte[] pixels = new byte[width * height * channels];
+                frame.CopyPixels(pixels, width * channels, 0);
+
+                // 4. 建立 Mat
+                Mat mat;
+                if (channels == 3)
+                {
+                    mat = new Mat(height, width, MatType.CV_8UC3, pixels);
+                    Cv2.CvtColor(mat, mat, ColorConversionCodes.RGB2BGR);
+                }
+                else if (channels == 4)
+                {
+                    mat = new Mat(height, width, MatType.CV_8UC4, pixels);
+                }
+                else
+                {
+                    mat = new Mat(height, width, MatType.CV_8UC1, pixels);
+                }
+
+                Console.WriteLine($"原圖尺寸: {mat.Rows}x{mat.Cols}x{channels}");
+
+                // 5. Resize
+                Mat resizedMat = new Mat();
+                Cv2.Resize(mat, resizedMat, new OpenCvSharp.Size(targetWidth, targetHeight),
+                           0, 0, InterpolationFlags.Linear);
+
+                Console.WriteLine($"Resize 後尺寸: {resizedMat.Rows}x{resizedMat.Cols}");
+
+                // 6. 儲存
+                Cv2.ImWrite(savePath, resizedMat);
+                Console.WriteLine($"儲存完成: {savePath}");
+
+                // 7. 釋放資源
+                mat.Dispose();
+                resizedMat.Dispose();
+            }
+        }
 
 
 
