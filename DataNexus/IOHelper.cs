@@ -518,5 +518,20 @@ namespace DataNexus
         }
         #endregion
 
+        public void GetRAMMemory()
+        {
+            var ramQuery = new ManagementObjectSearcher("SELECT TotalVisibleMemorySize, FreePhysicalMemory FROM Win32_OperatingSystem");
+            foreach (ManagementObject obj in ramQuery.Get())
+            {
+                ulong totalKB = Convert.ToUInt64(obj["TotalVisibleMemorySize"]);
+                ulong freeKB = Convert.ToUInt64(obj["FreePhysicalMemory"]);
+                ulong usedKB = totalKB - freeKB;
+
+                double totalGB = totalKB / 1024.0 / 1024.0;
+                double usedGB = usedKB / 1024.0 / 1024.0;
+
+                Console.WriteLine($"記憶體使用: {usedGB:F2} GB / {totalGB:F2} GB");
+            }
+        }
     }
 }

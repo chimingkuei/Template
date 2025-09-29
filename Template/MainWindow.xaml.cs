@@ -324,6 +324,7 @@ namespace Template
         #region Parameter and Init
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            WriteVersionToFile();
             LoadConfig(0, 0);
         }
         BaseConfig<RootObject> Config = new BaseConfig<RootObject>();
@@ -344,6 +345,21 @@ namespace Template
             }
         }
 
+        private void About_Click(object sender, MouseButtonEventArgs e)
+        {
+            string filePath = "AssemblyVersion.txt";
+            if (File.Exists(filePath))
+            {
+                string version = File.ReadAllText(filePath).Trim();
+                MessageBox.Show($"版本號︰{version}", "版本", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                MessageBox.Show("未找到版本號!", "版本", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            e.Handled = true; // 阻止切換到這個 Tab 的內容
+        }
+
         #region Shortcut Key
         private void CommandBinding_ShortcutKey(object sender, ExecutedRoutedEventArgs e)
         {
@@ -351,7 +367,6 @@ namespace Template
         }
         #endregion
         #endregion
-
 
     }
 }

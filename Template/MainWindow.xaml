@@ -65,6 +65,7 @@
 
                 </Grid>
             </TabItem>
+            <TabItem Header="關於" Style="{StaticResource BaseTabcontrol}" PreviewMouseLeftButtonDown="About_Click"/>
         </TabControl>
     </Grid>
 </Window>
