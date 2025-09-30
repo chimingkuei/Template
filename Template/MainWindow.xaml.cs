@@ -34,6 +34,7 @@ using DataNexus.ComNet;
 using System.Drawing.Imaging;
 using System.Windows.Controls.Primitives;
 using System.Text.RegularExpressions;
+using System.Xml.Linq;
 
 
 namespace Template
@@ -299,23 +300,46 @@ namespace Template
             textbox.Text = path.SelectedPath;
         }
 
-        private void WriteVersionToFile()
+        private void WriteVersionToXml()
         {
+            // 取得程式名稱（不含副檔名）
+            string appName = Assembly.GetEntryAssembly()?.GetName().Name ?? "UnknownApp";
             string baseDir = AppDomain.CurrentDomain.BaseDirectory;  // 執行檔目錄
             string assemblyInfoPath = System.IO.Path.GetFullPath(System.IO.Path.Combine(baseDir, @"..\..\..\Properties\AssemblyInfo.cs"));
             if (File.Exists(assemblyInfoPath))
             {
-                // 讀取檔案內容
+                // 讀取 AssemblyInfo.cs
                 string content = File.ReadAllText(assemblyInfoPath);
-                // 使用正則表示式擷取 AssemblyFileVersion
+                // 使用正則抓取 AssemblyFileVersion
                 Regex regex = new Regex(@"\[assembly:\s*AssemblyFileVersion\s*\(\s*""(?<version>[\d\.]+)""\s*\)\s*\]");
                 Match match = regex.Match(content);
                 if (match.Success)
                 {
-                    string version = match.Groups["version"].Value;
-                    // 將版本寫入 TXT 檔案
-                    string outputPath = "AssemblyVersion.txt";
-                    File.WriteAllText(outputPath, version);
+                    string versionStr = match.Groups["version"].Value; // 例如 "1.2.3.45"
+                    // 分割版本號
+                    string[] parts = versionStr.Split('.');
+                    string major = parts.Length > 0 ? parts[0] : "0";
+                    string minor = parts.Length > 1 ? parts[1] : "0";
+                    string patch = parts.Length > 2 ? parts[2] : "0";
+                    string build = parts.Length > 3 ? parts[3] : "0";
+                    // 建立 XML
+                    XDocument doc = new XDocument(
+                        new XDeclaration("1.0", "utf-8", null),
+                        new XElement("VersionInfo",
+                            new XElement("Application",
+                                new XAttribute("name", appName),
+                                new XElement("Version",
+                                    new XAttribute("major", major),
+                                    new XAttribute("minor", minor),
+                                    new XAttribute("patch", patch),
+                                    new XAttribute("build", build)
+                                )
+                            )
+                        )
+                    );
+                    // 寫入 XML 檔案
+                    string outputPath = "AssemblyVersion.xml";
+                    doc.Save(outputPath);
                 }
             }
         }
@@ -324,7 +348,7 @@ namespace Template
         #region Parameter and Init
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            WriteVersionToFile();
+            WriteVersionToXml();
             LoadConfig(0, 0);
         }
         BaseConfig<RootObject> Config = new BaseConfig<RootObject>();
@@ -332,7 +356,7 @@ namespace Template
         Webcam Cam = new Webcam();
         #endregion
 
-        #region Main Screen
+        #region Main Window
         private void Main_Btn_Click(object sender, RoutedEventArgs e)
         {
             switch ((sender as Button).Name)
@@ -347,15 +371,35 @@ namespace Template
 
         private void About_Click(object sender, MouseButtonEventArgs e)
         {
-            string filePath = "AssemblyVersion.txt";
+            string filePath = "AssemblyVersion.xml";
             if (File.Exists(filePath))
             {
-                string version = File.ReadAllText(filePath).Trim();
-                MessageBox.Show($"版本號︰{version}", "版本", MessageBoxButton.OK, MessageBoxImage.Information);
+                try
+                {
+                    XDocument doc = XDocument.Load(filePath);
+                    XElement versionElement = doc.Root?.Element("Application")?.Element("Version");
+                    if (versionElement != null)
+                    {
+                        string major = versionElement.Attribute("major")?.Value ?? "0";
+                        string minor = versionElement.Attribute("minor")?.Value ?? "0";
+                        string patch = versionElement.Attribute("patch")?.Value ?? "0";
+                        string build = versionElement.Attribute("build")?.Value ?? "0";
+                        string version = $"{major}.{minor}.{patch}.{build}";
+                        MessageBox.Show($"版本號︰{version}", "版本", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("XML 中未找到版本號!", "版本", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"讀取版本號失敗: {ex.Message}", "版本", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
             else
             {
-                MessageBox.Show("未找到版本號!", "版本", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("未找到版本號 XML!", "版本", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             e.Handled = true; // 阻止切換到這個 Tab 的內容
         }
