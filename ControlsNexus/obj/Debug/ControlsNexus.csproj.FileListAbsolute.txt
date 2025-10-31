@@ -35,3 +35,5 @@ D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\obj\Debug\ControlsNexus
 D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\obj\Debug\Controls.3C4199FC.Up2Date
 D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\obj\Debug\ControlsNexus.dll
 D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\obj\Debug\ControlsNexus.pdb
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\obj\Debug\DiskClean.g.cs
+D:\Chimingkuei\repos\Reference\C#\Template\ControlsNexus\obj\Debug\DiskClean.baml

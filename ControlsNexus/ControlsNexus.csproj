@@ -70,6 +70,9 @@
     <Compile Include="Chart\LineChart.xaml.cs">
       <DependentUpon>LineChart.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DiskClean.xaml.cs">
+      <DependentUpon>DiskClean.xaml</DependentUpon>
+    </Compile>
     <Compile Include="IndicatorLight.xaml.cs" />
     <Compile Include="JoystickControl.cs" />
     <Compile Include="Chart\PieChart.xaml.cs" />
@@ -112,6 +115,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Chart\LineChart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiskClean.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -364,6 +364,8 @@ namespace Template
                 case nameof(Demo):
                     {
                         //Cam.OpenCamera(0, Display_Windows);
+                        DiskClean win = new DiskClean();
+                        win.ShowDialog();
                         break;
                     }
             }

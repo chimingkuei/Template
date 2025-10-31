@@ -16,7 +16,16 @@
         <RoutedCommand x:Key="ShortcutKey"/>
     </Window.Resources>
     <Grid>
-        <TabControl x:Name="Log" HorizontalAlignment="Left" Height="172" Margin="5,485,0,0" VerticalAlignment="Top" Width="790" Background="#FFE6F0FF">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5.5*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="200" />
+        </Grid.ColumnDefinitions>
+        <Image Grid.Row="1" Grid.Column="1" x:Name="Logo"  Margin="18,37,0,0" HorizontalAlignment="Left" Height="141" VerticalAlignment="Top" Width="159" Source="Icon/DeepWise.png" RenderTransformOrigin="0.339,0.458"/>
+        <TabControl Grid.Row="1" Grid.Column="0" x:Name="Log" HorizontalAlignment="Left" Height="172" VerticalAlignment="Top" Width="790" Background="#FFE6F0FF">
             <TabControl.Resources>
                 <Style TargetType="RichTextBox">
                     <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
@@ -42,7 +51,7 @@
                 <RichTextBox x:Name="richTextBoxDebug" Background="#FF4396BF"/>
             </TabItem>
         </TabControl>
-        <TabControl HorizontalAlignment="Left" Margin="5,3,0,0" VerticalAlignment="Top" Height="478" Width="978" Background="#FFE6F0FF">
+        <TabControl Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="492" Width="989" Background="#FFE6F0FF">
             <TabItem Header="主畫面" Style="{StaticResource BaseTabcontrol}">
                 <TabItem.CommandBindings>
                     <CommandBinding Command="{StaticResource ShortcutKey}" Executed="CommandBinding_ShortcutKey"/>
