@@ -24,7 +24,7 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="200" />
         </Grid.ColumnDefinitions>
-        <Image Grid.Row="1" Grid.Column="1" x:Name="Logo"  Margin="18,37,0,0" HorizontalAlignment="Left" Height="141" VerticalAlignment="Top" Width="159" Source="Icon/DeepWise.png" RenderTransformOrigin="0.339,0.458"/>
+        <Image Grid.Row="1" Grid.Column="1" x:Name="Logo"  Margin="18,37,0,0" HorizontalAlignment="Left" Height="141" VerticalAlignment="Top" Width="159" Source="Icon/DeepWise.png"/>
         <TabControl Grid.Row="1" Grid.Column="0" x:Name="Log" HorizontalAlignment="Left" Height="172" VerticalAlignment="Top" Width="790" Background="#FFE6F0FF">
             <TabControl.Resources>
                 <Style TargetType="RichTextBox">
