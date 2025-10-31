@@ -25,7 +25,7 @@
             <ColumnDefinition Width="200" />
         </Grid.ColumnDefinitions>
         <Image Grid.Row="1" Grid.Column="1" x:Name="Logo"  Margin="18,37,0,0" HorizontalAlignment="Left" Height="141" VerticalAlignment="Top" Width="159" Source="Icon/DeepWise.png"/>
-        <TabControl Grid.Row="1" Grid.Column="0" x:Name="Log" HorizontalAlignment="Left" Height="172" VerticalAlignment="Top" Width="790" Background="#FFE6F0FF">
+        <TabControl Grid.Row="1" Grid.Column="0" x:Name="Log" HorizontalAlignment="Left" Height="175" VerticalAlignment="Top" Width="790" Background="#FFE6F0FF">
             <TabControl.Resources>
                 <Style TargetType="RichTextBox">
                     <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
@@ -51,7 +51,7 @@
                 <RichTextBox x:Name="richTextBoxDebug" Background="#FF4396BF"/>
             </TabItem>
         </TabControl>
-        <TabControl Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="492" Width="989" Background="#FFE6F0FF">
+        <TabControl Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="491" Width="992" Background="#FFE6F0FF">
             <TabItem Header="主畫面" Style="{StaticResource BaseTabcontrol}">
                 <TabItem.CommandBindings>
                     <CommandBinding Command="{StaticResource ShortcutKey}" Executed="CommandBinding_ShortcutKey"/>

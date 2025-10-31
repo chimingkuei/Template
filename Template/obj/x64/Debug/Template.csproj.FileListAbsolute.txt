@@ -523,7 +523,6 @@ D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\LiveCharts.pdb
 D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\LiveCharts.xml
 D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\LiveCharts.Wpf.pdb
 D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\LiveCharts.Wpf.xml
-D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\netDxf.xml
 D:\Chimingkuei\repos\Reference\C#\Template\Template\obj\x64\Debug\Template.csproj.ResolveComReference.cache
 D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\SharpDX.DirectInput.dll
 D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\SharpDX.dll
