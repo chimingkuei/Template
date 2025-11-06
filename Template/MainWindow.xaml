@@ -25,7 +25,7 @@
             <ColumnDefinition Width="200" />
         </Grid.ColumnDefinitions>
         <Image Grid.Row="1" Grid.Column="1" x:Name="Logo"  Margin="18,37,0,0" HorizontalAlignment="Left" Height="141" VerticalAlignment="Top" Width="159" Source="Icon/DeepWise.png"/>
-        <TabControl Grid.Row="1" Grid.Column="0" x:Name="Log" HorizontalAlignment="Left" Height="175" VerticalAlignment="Top" Width="790" Background="#FFE6F0FF">
+        <TabControl Grid.Row="1" Grid.Column="0" x:Name="LogRecord" HorizontalAlignment="Left" Height="175" VerticalAlignment="Top" Width="790" Background="#FFE6F0FF">
             <TabControl.Resources>
                 <Style TargetType="RichTextBox">
                     <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
@@ -60,7 +60,7 @@
                     <KeyBinding Key="c" Modifiers="Control" Command="{StaticResource ShortcutKey}"/>
                 </TabItem.InputBindings>
                 <Grid>
-                    <Button x:Name="Demo" Style="{StaticResource CircleButton}" Margin="814,64,69,296" Content="Demo" FontSize="18" Height="100" Width="100" Click="Main_Btn_Click"/>
+                    <Button x:Name="Demo" Style="{StaticResource CircleButton}" Margin="812,64,74,295" Content="Demo" FontSize="18" Height="100" Width="100" Click="Main_Btn_Click"/>
                     <TextBox x:Name="Parameter1" Style="{StaticResource BaseTextBox}" Tag="請輸入內容..." Margin="806,203,67,216"/>
                     <TextBox x:Name="Parameter2" Style="{StaticResource BaseTextBox}" Tag="請輸入內容..." Margin="806,277,67,143"/>
                     <WindowsFormsHost  Margin="16,18,234,15">

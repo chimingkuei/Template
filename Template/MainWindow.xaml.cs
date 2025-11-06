@@ -35,6 +35,7 @@ using System.Drawing.Imaging;
 using System.Windows.Controls.Primitives;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
+using Serilog;
 
 
 namespace Template
@@ -161,6 +162,21 @@ namespace Template
         //}
         #endregion
         #endregion
+
+        /// <summary>
+        /// Log.Information("Application started at {time}", DateTime.Now);<br/>
+        /// Log.Warning("Low disk space on drive C:");<br/>
+        /// Log.Error("Unhandled exception: {exception}", new Exception("Test error"));<br/>
+        /// Log.Debug("Debug 訊息");<br/>
+        /// </summary>
+        private void LoggerInit()
+        {
+            Log.Logger = new LoggerConfiguration()
+               .MinimumLevel.Debug()
+               .WriteTo.File("LogRecord/Log-.txt", rollingInterval: RollingInterval.Day)
+               .WriteTo.Sink(new RichTextBoxSink(richTextBoxDebug, richTextBoxGeneral, richTextBoxWarning, richTextBoxError))
+               .CreateLogger();
+        }
 
         #region NotifyIcon
         private System.Windows.Forms.NotifyIcon notifyIcon = null;
@@ -348,11 +364,11 @@ namespace Template
         #region Parameter and Init
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            LoggerInit();
             WriteVersionToXml();
             LoadConfig(0, 0);
         }
         BaseConfig<RootObject> Config = new BaseConfig<RootObject>();
-        BaseLogRecord Logger = new BaseLogRecord();
         Webcam Cam = new Webcam();
         #endregion
 

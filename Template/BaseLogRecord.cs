@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Serilog.Core;
+using Serilog.Events;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,6 +12,67 @@ using System.Windows.Media;
 
 namespace Template
 {
+    public class RichTextBoxSink : ILogEventSink
+    {
+        private readonly RichTextBox _debugBox;
+        private readonly RichTextBox _infoBox;
+        private readonly RichTextBox _warnBox;
+        private readonly RichTextBox _errorBox;
+        private readonly IFormatProvider _formatProvider;
+
+        public RichTextBoxSink(RichTextBox debugBox, RichTextBox infoBox, RichTextBox warnBox, RichTextBox errorBox, IFormatProvider formatProvider = null)
+        {
+            _debugBox = debugBox;
+            _infoBox = infoBox;
+            _warnBox = warnBox;
+            _errorBox = errorBox;
+            _formatProvider = formatProvider;
+        }
+
+        public void Emit(LogEvent logEvent)
+        {
+            string message = logEvent.RenderMessage(_formatProvider);
+            string timestamp = logEvent.Timestamp.ToString("HH:mm:ss");
+            string fullMessage = $"[{timestamp}] [{logEvent.Level}] {message}";
+            RichTextBox targetBox = _infoBox;
+            Brush color = Brushes.White;
+            switch (logEvent.Level)
+            {
+                case LogEventLevel.Debug:
+                    targetBox = _debugBox;
+                    color = Brushes.Gray;
+                    break;
+                case LogEventLevel.Information:
+                    targetBox = _infoBox;
+                    color = Brushes.Black;
+                    break;
+                case LogEventLevel.Warning:
+                    targetBox = _warnBox;
+                    color = Brushes.Orange;
+                    break;
+                case LogEventLevel.Error:
+                case LogEventLevel.Fatal:
+                    targetBox = _errorBox;
+                    color = Brushes.Red;
+                    break;
+            }
+            targetBox.Dispatcher.Invoke(() =>
+            {
+                // 取得最後一個 Paragraph，如果沒有就新建
+                Paragraph paragraph = targetBox.Document.Blocks.LastBlock as Paragraph;
+                if (paragraph == null)
+                {
+                    paragraph = new Paragraph();
+                    targetBox.Document.Blocks.Add(paragraph);
+                }
+
+                // 在同一段落追加文字，不額外換行
+                paragraph.Inlines.Add(new Run(fullMessage + "\n") { Foreground = color });
+                targetBox.ScrollToEnd();
+            });
+        }
+    }
+
     public class BaseLogRecord
     {
         public enum LogLevel { General, Warning, Debug, Error };

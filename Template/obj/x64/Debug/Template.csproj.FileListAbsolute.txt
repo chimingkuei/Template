@@ -541,3 +541,13 @@ D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\VisionNexus.pd
 D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\VisionNexus.dll.config
 D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\ControlsNexus.dll
 D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\ControlsNexus.pdb
+D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\Serilog.dll
+D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\Serilog.Sinks.Console.dll
+D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\Serilog.Sinks.File.dll
+D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\System.Diagnostics.DiagnosticSource.dll
+D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\System.Threading.Channels.dll
+D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\Serilog.xml
+D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\Serilog.Sinks.Console.xml
+D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\Serilog.Sinks.File.xml
+D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\System.Diagnostics.DiagnosticSource.xml
+D:\Chimingkuei\repos\Reference\C#\Template\Template\bin\x64\Debug\System.Threading.Channels.xml
