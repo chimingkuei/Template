@@ -394,34 +394,32 @@ namespace Template
         private void About_Click(object sender, MouseButtonEventArgs e)
         {
             string filePath = "AssemblyVersion.xml";
-            if (File.Exists(filePath))
-            {
-                try
-                {
-                    XDocument doc = XDocument.Load(filePath);
-                    XElement versionElement = doc.Root?.Element("Application")?.Element("Version");
-                    if (versionElement != null)
-                    {
-                        string major = versionElement.Attribute("major")?.Value ?? "0";
-                        string minor = versionElement.Attribute("minor")?.Value ?? "0";
-                        string patch = versionElement.Attribute("patch")?.Value ?? "0";
-                        string build = versionElement.Attribute("build")?.Value ?? "0";
-                        string version = $"{major}.{minor}.{patch}.{build}";
-                        MessageBox.Show($"版本號︰{version}", "版本", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("XML 中未找到版本號!", "版本", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"讀取版本號失敗: {ex.Message}", "版本", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-            else
+            if (!File.Exists(filePath))
             {
                 MessageBox.Show("未找到版本號 XML!", "版本", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+            try
+            {
+                XDocument doc = XDocument.Load(filePath);
+                XElement versionElement = doc.Root?.Element("Application")?.Element("Version");
+                if (versionElement != null)
+                {
+                    string major = versionElement.Attribute("major")?.Value ?? "0";
+                    string minor = versionElement.Attribute("minor")?.Value ?? "0";
+                    string patch = versionElement.Attribute("patch")?.Value ?? "0";
+                    string build = versionElement.Attribute("build")?.Value ?? "0";
+                    string version = $"{major}.{minor}.{patch}.{build}";
+                    MessageBox.Show($"版本號︰{version}", "版本", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("XML 中未找到版本號!", "版本", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"讀取版本號失敗: {ex.Message}", "版本", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             e.Handled = true; // 阻止切換到這個 Tab 的內容
         }
