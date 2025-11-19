@@ -101,6 +101,7 @@ namespace Template
             {
                 Parameter1.Text = Parameter_info[model].Models[serialnumber].SerialNumbers.Parameter1_val;
                 Parameter2.Text = Parameter_info[model].Models[serialnumber].SerialNumbers.Parameter2_val;
+                Log.Information("導入參數。");
             }
             else
             {
@@ -119,9 +120,12 @@ namespace Template
                 Config.SaveInit(rootObjects, isEncryption);
             }
         }
-       
+
         private void SaveConfig(int model, int serialnumber, bool isBackup = true, bool isEncryption = false)
-            => Config.Save(model, serialnumber, SerialNumberClass(), isBackup, isEncryption);
+        {
+            Config.Save(model, serialnumber, SerialNumberClass(), isBackup, isEncryption);
+            Log.Information("儲存參數。");
+        }
         #endregion
 
         #region Dispatcher Invoke 
@@ -174,7 +178,7 @@ namespace Template
             Log.Logger = new LoggerConfiguration()
                .MinimumLevel.Debug()
                .WriteTo.File("LogRecord/Log-.txt", rollingInterval: RollingInterval.Day)
-               .WriteTo.Sink(new RichTextBoxSink(richTextBoxDebug, richTextBoxGeneral, richTextBoxWarning, richTextBoxError))
+               .WriteTo.Sink(new RichTextBoxSink(richTextBoxDebug, richTextBoxGeneral, richTextBoxWarning, richTextBoxError, LogRecord))
                .CreateLogger();
         }
 

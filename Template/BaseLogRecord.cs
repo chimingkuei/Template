@@ -18,15 +18,53 @@ namespace Template
         private readonly RichTextBox _infoBox;
         private readonly RichTextBox _warnBox;
         private readonly RichTextBox _errorBox;
+        private readonly TabControl _tabControl;
         private readonly IFormatProvider _formatProvider;
+        private readonly bool _autoSwitchTab;
 
-        public RichTextBoxSink(RichTextBox debugBox, RichTextBox infoBox, RichTextBox warnBox, RichTextBox errorBox, IFormatProvider formatProvider = null)
+        public RichTextBoxSink(RichTextBox debugBox, RichTextBox infoBox, RichTextBox warnBox, RichTextBox errorBox, TabControl tabControl, IFormatProvider formatProvider = null, bool autoSwitchTab = true)
         {
             _debugBox = debugBox;
             _infoBox = infoBox;
             _warnBox = warnBox;
             _errorBox = errorBox;
+            _tabControl = tabControl;
             _formatProvider = formatProvider;
+            _autoSwitchTab = autoSwitchTab;
+        }
+
+        private Tuple<RichTextBox, Brush> GetTarget(LogEventLevel level)
+        {
+            RichTextBox box;
+            Brush color;
+            switch (level)
+            {
+                case LogEventLevel.Debug:
+                    box = _debugBox;
+                    color = Brushes.Gray;
+                    break;
+                case LogEventLevel.Information:
+                    box = _infoBox;
+                    color = Brushes.Black;
+                    break;
+                case LogEventLevel.Warning:
+                    box = _warnBox;
+                    color = Brushes.Orange;
+                    break;
+                case LogEventLevel.Error:
+                    box = _errorBox;
+                    color = Brushes.Red;
+                    break;
+                case LogEventLevel.Fatal:
+                    box = _errorBox;
+                    color = Brushes.DarkRed;
+                    break;
+                default:
+                    box = _infoBox;
+                    color = Brushes.White;
+                    break;
+            }
+            return Tuple.Create(box, color);
         }
 
         public void Emit(LogEvent logEvent)
@@ -34,41 +72,31 @@ namespace Template
             string message = logEvent.RenderMessage(_formatProvider);
             string timestamp = logEvent.Timestamp.ToString("HH:mm:ss");
             string fullMessage = $"[{timestamp}] [{logEvent.Level}] {message}";
-            RichTextBox targetBox = _infoBox;
-            Brush color = Brushes.White;
-            switch (logEvent.Level)
-            {
-                case LogEventLevel.Debug:
-                    targetBox = _debugBox;
-                    color = Brushes.Gray;
-                    break;
-                case LogEventLevel.Information:
-                    targetBox = _infoBox;
-                    color = Brushes.Black;
-                    break;
-                case LogEventLevel.Warning:
-                    targetBox = _warnBox;
-                    color = Brushes.Orange;
-                    break;
-                case LogEventLevel.Error:
-                case LogEventLevel.Fatal:
-                    targetBox = _errorBox;
-                    color = Brushes.Red;
-                    break;
-            }
+            var target = GetTarget(logEvent.Level);
+            RichTextBox targetBox = target.Item1;
+            Brush color = target.Item2;
             targetBox.Dispatcher.Invoke(() =>
             {
-                // 取得最後一個 Paragraph，如果沒有就新建
                 Paragraph paragraph = targetBox.Document.Blocks.LastBlock as Paragraph;
                 if (paragraph == null)
                 {
                     paragraph = new Paragraph();
                     targetBox.Document.Blocks.Add(paragraph);
                 }
-
-                // 在同一段落追加文字，不額外換行
                 paragraph.Inlines.Add(new Run(fullMessage + "\n") { Foreground = color });
                 targetBox.ScrollToEnd();
+                // 切換 TabItem 到對應的 RichTextBox
+                if (_autoSwitchTab && _tabControl != null)
+                {
+                    foreach (TabItem tab in _tabControl.Items)
+                    {
+                        if (tab.Content == targetBox)
+                        {
+                            _tabControl.SelectedItem = tab;
+                            break;
+                        }
+                    }
+                }
             });
         }
     }
