@@ -396,7 +396,7 @@ namespace Template
             string filePath = "AssemblyVersion.xml";
             if (!File.Exists(filePath))
             {
-                MessageBox.Show("未找到版本號 XML!", "版本", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("未找到版本號 XML!", "警告", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
             try
@@ -414,12 +414,12 @@ namespace Template
                 }
                 else
                 {
-                    MessageBox.Show("XML 中未找到版本號!", "版本", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("XML 中未找到版本號!", "警告", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"讀取版本號失敗: {ex.Message}", "版本", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"讀取版本號失敗: {ex.Message}", "錯誤", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             e.Handled = true; // 阻止切換到這個 Tab 的內容
         }
