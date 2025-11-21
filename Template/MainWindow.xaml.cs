@@ -312,14 +312,6 @@ namespace Template
         //}
         #endregion
 
-        private void OpenFolder(string description, System.Windows.Controls.TextBox textbox)
-        {
-            System.Windows.Forms.FolderBrowserDialog path = new System.Windows.Forms.FolderBrowserDialog();
-            path.Description = description;
-            path.ShowDialog();
-            textbox.Text = path.SelectedPath;
-        }
-
         private void WriteVersionToXml()
         {
             // 取得程式名稱（不含副檔名）
@@ -364,11 +356,20 @@ namespace Template
             }
         }
 
+        private void OpenFolder(string description, System.Windows.Controls.TextBox textbox)
+        {
+            System.Windows.Forms.FolderBrowserDialog path = new System.Windows.Forms.FolderBrowserDialog();
+            path.Description = description;
+            path.ShowDialog();
+            textbox.Text = path.SelectedPath;
+            Log.Warning("開啟資料夾路徑︰{Path}!", path.SelectedPath);
+        }
+
         private bool WarnAndLog(string name, string recordName)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
-                Log.Warning($"請輸入{recordName}!");
+                Log.Warning("請輸入{recordName}!", recordName);
                 MessageBox.Show($"請輸入{recordName}!", "警告", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return true;
             }
