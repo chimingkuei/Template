@@ -363,6 +363,17 @@ namespace Template
                 }
             }
         }
+
+        private bool WarnAndLog(string name, string recordName)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                Log.Warning($"請輸入{recordName}!");
+                MessageBox.Show($"請輸入{recordName}!", "警告", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return true;
+            }
+            return false;
+        }
         #endregion
 
         #region Parameter and Init
