@@ -73,14 +73,17 @@ namespace Template
         #region Function
         private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (MessageBox.Show("請問是否要關閉？", "確認", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-            {
-                e.Cancel = false;
-            }
-            else
-            {
-                e.Cancel = true;
-            }
+            string message = isDirty
+            ? "尚未儲存，確定要離開？"
+            : "請問是否要關閉？";
+            string title = isDirty ? "提示" : "確認";
+            var result = MessageBox.Show(
+                message,
+                title,
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question
+            );
+            e.Cancel = result == MessageBoxResult.No;
         }
 
         #region Config
@@ -386,6 +389,7 @@ namespace Template
         }
         BaseConfig<RootObject> Config = new BaseConfig<RootObject>();
         Webcam Cam = new Webcam();
+        private bool isDirty = false;
         #endregion
 
         #region Main Window
@@ -396,11 +400,18 @@ namespace Template
                 case nameof(Demo):
                     {
                         //Cam.OpenCamera(0, Display_Windows);
-                        DiskClean win = new DiskClean();
-                        win.ShowDialog();
+                        //DiskClean win = new DiskClean();
+                        //win.ShowDialog();
+                        isDirty = false;
+                        SaveConfig(0, 0);
                         break;
                     }
             }
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            isDirty = true;
         }
 
         private void About_Click(object sender, MouseButtonEventArgs e)

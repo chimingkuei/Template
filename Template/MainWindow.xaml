@@ -61,7 +61,7 @@
                 </TabItem.InputBindings>
                 <Grid>
                     <Button x:Name="Demo" Style="{StaticResource CircleButton}" Margin="812,64,74,295" Content="Demo" FontSize="18" Height="100" Width="100" Click="Main_Btn_Click"/>
-                    <TextBox x:Name="Parameter1" Style="{StaticResource BaseTextBox}" Tag="請輸入內容..." Margin="806,203,67,216"/>
+                    <TextBox x:Name="Parameter1" Style="{StaticResource BaseTextBox}" Tag="請輸入內容..." Margin="806,203,67,216" TextChanged="TextBox_TextChanged"/>
                     <TextBox x:Name="Parameter2" Style="{StaticResource BaseTextBox}" Tag="請輸入內容..." Margin="806,277,67,143"/>
                     <WindowsFormsHost  Margin="16,18,234,15">
                         <wf:PictureBox x:Name="Display_Windows" BorderStyle="FixedSingle"/>
