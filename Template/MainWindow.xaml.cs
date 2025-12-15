@@ -36,6 +36,8 @@ using System.Windows.Controls.Primitives;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using Serilog;
+using Path = System.IO.Path;
+using System.Windows.Threading;
 
 
 namespace Template
@@ -378,11 +380,83 @@ namespace Template
             }
             return false;
         }
+
+        #region Check whether the filename contains illegal characters(English input method only)
+        private bool _isUpdating = false;
+        private bool _messagePending = false;
+        /// <summary>
+        /// 鍵盤輸入：阻擋非法字元
+        /// </summary>
+        private void FileName_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            char[] invalidChars = Path.GetInvalidFileNameChars();
+            if (e.Text.Any(c => invalidChars.Contains(c)))
+            {
+                e.Handled = true;
+                RequestShowMessage();
+            }
+        }
+        /// <summary>
+        /// 貼上：只移除非法字元
+        /// </summary>
+        private void FileName_Pasting(object sender, DataObjectPastingEventArgs e)
+        {
+            if (!e.DataObject.GetDataPresent(DataFormats.Text))return;
+            var tb = sender as TextBox;
+            string pasteText = (string)e.DataObject.GetData(DataFormats.Text);
+            char[] invalidChars = Path.GetInvalidFileNameChars();
+            if (pasteText.Any(c => invalidChars.Contains(c)))
+            {
+                string cleaned = new string(pasteText.Where(c => !invalidChars.Contains(c)).ToArray());
+                int caret = tb.CaretIndex;
+                tb.Text = tb.Text.Substring(0, caret) + cleaned + tb.Text.Substring(caret);
+                tb.CaretIndex = caret + cleaned.Length;
+                e.CancelCommand();
+                RequestShowMessage();
+            }
+        }
+        /// <summary>
+        /// TextChanged：統一清掉非法字元
+        /// </summary>
+        private void FileName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (_isUpdating)return;
+            var tb = sender as TextBox;
+            if (tb == null || string.IsNullOrEmpty(tb.Text))return;
+            char[] invalidChars = Path.GetInvalidFileNameChars();
+            if (!tb.Text.Any(c => invalidChars.Contains(c)))
+            {
+                _messagePending = false;
+                return;
+            }
+            _isUpdating = true;
+            int caret = tb.CaretIndex;
+            string cleaned = new string(tb.Text.Where(c => !invalidChars.Contains(c)).ToArray());
+            tb.Text = cleaned;
+            tb.CaretIndex = Math.Min(caret, tb.Text.Length);
+            _isUpdating = false;
+            RequestShowMessage();
+        }
+        /// <summary>
+        /// MessageBox 延後顯示一次
+        /// </summary>
+        private void RequestShowMessage()
+        {
+            if (_messagePending)return;
+            _messagePending = true;
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                MessageBox.Show("檔名不可包含下列字元，已自動移除：\n\\ / : * ? \" < > |", "警告", MessageBoxButton.OK, MessageBoxImage.Warning);
+                _messagePending = false;
+            }), DispatcherPriority.Background);
+        }
+        #endregion
         #endregion
 
         #region Parameter and Init
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            Parameter1.TextChanged += RemindConfig_TextChanged;
             LoggerInit();
             WriteVersionToXml();
             LoadConfig(0, 0);
@@ -409,7 +483,7 @@ namespace Template
             }
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void RemindConfig_TextChanged(object sender, TextChangedEventArgs e)
         {
             isDirty = true;
         }
