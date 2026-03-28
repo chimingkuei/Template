@@ -172,6 +172,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="BaseConfig.cs" />
+    <Compile Include="BaseConfigData.cs" />
     <Compile Include="BaseLogRecord.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

@@ -2,6 +2,7 @@
 using OpenCvSharp.Extensions;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -144,8 +145,11 @@ namespace VisionNexus
         /// <param name="targetHeight">目標高度</param>
         public void ReadLargeImageAndResize(string filePath, string savePath, int targetWidth, int targetHeight)
         {
+            Stopwatch swRead = new Stopwatch();
+            Stopwatch swResize = new Stopwatch();
             using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
             {
+                swRead.Start();
                 // 1. 建立 Decoder (不使用 DelayCreation)
                 BitmapDecoder decoder = BitmapDecoder.Create(
                     fs,
@@ -177,16 +181,17 @@ namespace VisionNexus
                 {
                     mat = new Mat(height, width, MatType.CV_8UC1, pixels);
                 }
-
+                swRead.Stop();
                 Console.WriteLine($"原圖尺寸: {mat.Rows}x{mat.Cols}x{channels}");
-
+                Console.WriteLine($"讀取影像耗時: {swRead.ElapsedMilliseconds} ms");
+                swResize.Start();
                 // 5. Resize
                 Mat resizedMat = new Mat();
                 Cv2.Resize(mat, resizedMat, new OpenCvSharp.Size(targetWidth, targetHeight),
                            0, 0, InterpolationFlags.Linear);
-
+                swResize.Stop();
                 Console.WriteLine($"Resize 後尺寸: {resizedMat.Rows}x{resizedMat.Cols}");
-
+                Console.WriteLine($"Resize 耗時: {swResize.ElapsedMilliseconds} ms");
                 // 6. 儲存
                 Cv2.ImWrite(savePath, resizedMat);
                 Console.WriteLine($"儲存完成: {savePath}");
