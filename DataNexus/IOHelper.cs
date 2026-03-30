@@ -19,6 +19,22 @@ namespace DataNexus
     public class IOHelper
     {
         #region Task use
+        #region 開多個Task
+        //int maxTasks = 10; // 設定最大任務數量
+        //Task[] tasks = new Task[maxTasks];
+        //for (int i = 0; i<maxTasks; i++)
+        //{
+        //    int taskId = i;
+        //        tasks[i] = Task.Run(() =>
+        //    {
+        //        Thread.Sleep(3000);
+        //        Console.WriteLine($"Task {taskId} is running on thread {Task.CurrentId}");
+        //    });
+        //}
+        //// 等待所有任務完成
+        //Task.WhenAll(tasks).Wait();
+        #endregion
+
         #region 停止
         //var cts = new CancellationTokenSource();
         //Task task = Task.Run(() =>
@@ -56,22 +72,6 @@ namespace DataNexus
         //    }
         //}
         // Do something!
-        #endregion
-
-        #region 開多個Task
-        //int maxTasks = 10; // 設定最大任務數量
-        //Task[] tasks = new Task[maxTasks];
-        //for (int i = 0; i<maxTasks; i++)
-        //{
-        //    int taskId = i;
-        //        tasks[i] = Task.Run(() =>
-        //    {
-        //        Thread.Sleep(3000);
-        //        Console.WriteLine($"Task {taskId} is running on thread {Task.CurrentId}");
-        //    });
-        //}
-        //// 等待所有任務完成
-        //Task.WhenAll(tasks).Wait();
         #endregion
         #endregion
 
